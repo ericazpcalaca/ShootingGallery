@@ -141,7 +141,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraLookAt: {fileID: 0}
   _targetIndicator: {fileID: 8222818903376564884}
-  _raycastDistance: 10
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _raycastDistance: 15
   _cameraRotationSpeed: 10
   _minRotDelta: 0.3
   _debugEnabled: 0

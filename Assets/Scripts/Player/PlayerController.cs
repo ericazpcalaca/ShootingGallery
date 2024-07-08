@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 namespace ShootingGallery
 {
@@ -6,6 +7,7 @@ namespace ShootingGallery
     {
         [SerializeField] private Transform _cameraLookAt;
         [SerializeField] private Transform _targetIndicator;
+        [SerializeField] private LayerMask _targetLayer;
         [SerializeField] private float _raycastDistance = 15f;
         [SerializeField] private float _cameraRotationSpeed = 1;
         [SerializeField] private float _minRotDelta = 0.3f;
@@ -37,17 +39,15 @@ namespace ShootingGallery
 
         private void OnPlayerShoot()
         {
-            if (_debugEnabled)
-                Debug.DrawLine(_targetIndicator.position, _targetIndicator.forward * _raycastDistance, Color.cyan, 3);
+            Vector3 startPos = _targetIndicator.position + _targetIndicator.forward * 3f;
             
-            if (Physics.Raycast(_targetIndicator.position, _targetIndicator.forward, _raycastDistance))
+            if (_debugEnabled)
+                Debug.DrawLine(startPos, _targetIndicator.forward * _raycastDistance, Color.cyan, 3);
+
+            if (Physics.Raycast(startPos, _targetIndicator.forward, out RaycastHit hitInfo, _raycastDistance, _targetLayer.value))
             {
-                Debug.Log("Hit!!!!");
-            }
-            else
-            {
-                Debug.Log("No hit :(");
-            }
+                Destroy(hitInfo.collider.gameObject);
+            }           
         }
 
         private void OnPlayerMoveCamera(Vector2 posDelta)
