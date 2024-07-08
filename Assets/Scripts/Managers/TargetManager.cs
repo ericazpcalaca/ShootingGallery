@@ -28,12 +28,12 @@ namespace ShootingGallery
             }
         }
 
-        public void Spawn(Vector3 worldPos, TargetMovement.MovementType movementType, float speed)
+        public void Spawn(Vector3 worldPos, TargetController.MovementType movementType, float speed)
         {
             var target = GetFromPool();
             target.transform.position = worldPos;
 
-            var targetMovement = target.GetComponent<TargetMovement>();
+            var targetMovement = target.GetComponent<TargetController>();
             if (targetMovement != null)
             {
                 targetMovement.CanMove = true;
