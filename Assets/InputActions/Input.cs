@@ -46,6 +46,24 @@ namespace ShootingGallery
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""AllowShooting"",
+                    ""type"": ""Button"",
+                    ""id"": ""25ff1cbb-209a-42f6-ade7-e6232773bd67"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseShooting"",
+                    ""type"": ""Button"",
+                    ""id"": ""480d1cea-2d73-48f7-801a-6b775c9cf26f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -70,6 +88,28 @@ namespace ShootingGallery
                     ""action"": ""MoveCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0cf4e03-73bc-4138-864d-3a4f17c34606"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AllowShooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8daa4b58-7b03-43d4-a0a7-2f145bc89617"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseShooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -80,6 +120,8 @@ namespace ShootingGallery
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
             m_Player_MoveCamera = m_Player.FindAction("MoveCamera", throwIfNotFound: true);
+            m_Player_AllowShooting = m_Player.FindAction("AllowShooting", throwIfNotFound: true);
+            m_Player_PauseShooting = m_Player.FindAction("PauseShooting", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -143,12 +185,16 @@ namespace ShootingGallery
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Shoot;
         private readonly InputAction m_Player_MoveCamera;
+        private readonly InputAction m_Player_AllowShooting;
+        private readonly InputAction m_Player_PauseShooting;
         public struct PlayerActions
         {
             private @Input m_Wrapper;
             public PlayerActions(@Input wrapper) { m_Wrapper = wrapper; }
             public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
             public InputAction @MoveCamera => m_Wrapper.m_Player_MoveCamera;
+            public InputAction @AllowShooting => m_Wrapper.m_Player_AllowShooting;
+            public InputAction @PauseShooting => m_Wrapper.m_Player_PauseShooting;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -164,6 +210,12 @@ namespace ShootingGallery
                 @MoveCamera.started += instance.OnMoveCamera;
                 @MoveCamera.performed += instance.OnMoveCamera;
                 @MoveCamera.canceled += instance.OnMoveCamera;
+                @AllowShooting.started += instance.OnAllowShooting;
+                @AllowShooting.performed += instance.OnAllowShooting;
+                @AllowShooting.canceled += instance.OnAllowShooting;
+                @PauseShooting.started += instance.OnPauseShooting;
+                @PauseShooting.performed += instance.OnPauseShooting;
+                @PauseShooting.canceled += instance.OnPauseShooting;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -174,6 +226,12 @@ namespace ShootingGallery
                 @MoveCamera.started -= instance.OnMoveCamera;
                 @MoveCamera.performed -= instance.OnMoveCamera;
                 @MoveCamera.canceled -= instance.OnMoveCamera;
+                @AllowShooting.started -= instance.OnAllowShooting;
+                @AllowShooting.performed -= instance.OnAllowShooting;
+                @AllowShooting.canceled -= instance.OnAllowShooting;
+                @PauseShooting.started -= instance.OnPauseShooting;
+                @PauseShooting.performed -= instance.OnPauseShooting;
+                @PauseShooting.canceled -= instance.OnPauseShooting;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -195,6 +253,8 @@ namespace ShootingGallery
         {
             void OnShoot(InputAction.CallbackContext context);
             void OnMoveCamera(InputAction.CallbackContext context);
+            void OnAllowShooting(InputAction.CallbackContext context);
+            void OnPauseShooting(InputAction.CallbackContext context);
         }
     }
 }

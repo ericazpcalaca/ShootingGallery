@@ -9,9 +9,9 @@ namespace ShootingGallery
     {
         public Action OnPlayerShoot;
         public Action<Vector2> OnPlayerMoveCamera;
-
+        
         private Input _input;
-
+        private bool _canShoot;
 
         private void Awake()
         {
@@ -28,13 +28,26 @@ namespace ShootingGallery
 
         public void OnShoot(InputAction.CallbackContext context)
         {
-            if (context.performed) 
+            if (_canShoot && context.performed) 
                 OnPlayerShoot?.Invoke();
         }
 
         public void OnMoveCamera(InputAction.CallbackContext context)
         {
-            OnPlayerMoveCamera?.Invoke(context.ReadValue<Vector2>());
+            if (_canShoot && context.performed)
+                OnPlayerMoveCamera?.Invoke(context.ReadValue<Vector2>());
+        }
+
+        public void OnAllowShooting(InputAction.CallbackContext context)
+        {
+            Cursor.visible = false;
+            _canShoot = true;
+        }
+
+        public void OnPauseShooting(InputAction.CallbackContext context)
+        {
+            Cursor.visible = true;
+            _canShoot = false;
         }
     }
 }
