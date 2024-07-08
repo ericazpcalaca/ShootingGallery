@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace ShootingGallery
@@ -13,11 +14,13 @@ namespace ShootingGallery
         {
             _input = GetComponent<PlayerInput>();
             _input.OnPlayerShoot += OnPlayerShoot;
+            _input.OnPlayerMoveCamera += OnPlayerMoveCamera;
         }
 
         private void OnDestroy()
         {
             _input.OnPlayerShoot -= OnPlayerShoot;
+            _input.OnPlayerMoveCamera -= OnPlayerMoveCamera;
         }
 
         private void OnPlayerShoot()
@@ -31,6 +34,10 @@ namespace ShootingGallery
             {
                 Debug.Log("No hit :(");
             }
+        }
+        private void OnPlayerMoveCamera(Vector2 posDelta)
+        {
+            Debug.Log($"Vector : {posDelta} ");
         }
     }
 }

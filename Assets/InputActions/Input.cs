@@ -37,6 +37,15 @@ namespace ShootingGallery
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveCamera"",
+                    ""type"": ""Value"",
+                    ""id"": ""19eda5f7-700a-4b0c-b801-c46156ba2ba1"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -50,6 +59,17 @@ namespace ShootingGallery
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8959d2ae-9b57-4c15-a404-89a7f3c46428"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -59,6 +79,7 @@ namespace ShootingGallery
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+            m_Player_MoveCamera = m_Player.FindAction("MoveCamera", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -121,11 +142,13 @@ namespace ShootingGallery
         private readonly InputActionMap m_Player;
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Shoot;
+        private readonly InputAction m_Player_MoveCamera;
         public struct PlayerActions
         {
             private @Input m_Wrapper;
             public PlayerActions(@Input wrapper) { m_Wrapper = wrapper; }
             public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+            public InputAction @MoveCamera => m_Wrapper.m_Player_MoveCamera;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -138,6 +161,9 @@ namespace ShootingGallery
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @MoveCamera.started += instance.OnMoveCamera;
+                @MoveCamera.performed += instance.OnMoveCamera;
+                @MoveCamera.canceled += instance.OnMoveCamera;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -145,6 +171,9 @@ namespace ShootingGallery
                 @Shoot.started -= instance.OnShoot;
                 @Shoot.performed -= instance.OnShoot;
                 @Shoot.canceled -= instance.OnShoot;
+                @MoveCamera.started -= instance.OnMoveCamera;
+                @MoveCamera.performed -= instance.OnMoveCamera;
+                @MoveCamera.canceled -= instance.OnMoveCamera;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -165,6 +194,7 @@ namespace ShootingGallery
         public interface IPlayerActions
         {
             void OnShoot(InputAction.CallbackContext context);
+            void OnMoveCamera(InputAction.CallbackContext context);
         }
     }
 }

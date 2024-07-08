@@ -8,8 +8,10 @@ namespace ShootingGallery
     public class PlayerInput : MonoBehaviour, IPlayerActions
     {
         public Action OnPlayerShoot;
+        public Action<Vector2> OnPlayerMoveCamera;
 
         private Input _input;
+
 
         private void Awake()
         {
@@ -28,6 +30,11 @@ namespace ShootingGallery
         {
             if (context.performed) 
                 OnPlayerShoot?.Invoke();
+        }
+
+        public void OnMoveCamera(InputAction.CallbackContext context)
+        {
+            OnPlayerMoveCamera?.Invoke(context.ReadValue<Vector2>());
         }
     }
 }
