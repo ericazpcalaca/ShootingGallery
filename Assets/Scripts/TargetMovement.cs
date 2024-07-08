@@ -6,25 +6,24 @@ namespace ShootingGallery
     {
         public enum MovementType
         {
-            UpDown,
-            LeftRight
+            Up,
+            Down,
+            Left,
+            Right          
         }
 
         [SerializeField] private MovementType _movementType;
         [SerializeField] private float _speed = 2f;
-        [SerializeField] private float _leftBoundary = -5f;
-        [SerializeField] private float _rightBoundary = 5f;
-        [SerializeField] private float _upBoundary = 7;
-        [SerializeField] private float _downBoundary = 0;
-
+        [SerializeField] private string _boundaryLayerName; 
+        
         public bool CanMove { get; set; }
 
-        private bool _movingRight = true;
-        private bool _movingDown = true;
+        private int _boundaryLayer;
 
         private void Awake()
         {
             CanMove = true;
+            _boundaryLayer = LayerMask.NameToLayer(_boundaryLayerName);
         }
 
         private void Update()
@@ -34,52 +33,46 @@ namespace ShootingGallery
 
             switch (_movementType)
             {
-                case MovementType.UpDown:
-                    MoveUpDown();
+                case MovementType.Up:
+                    MoveUp();
                     break;
-                case MovementType.LeftRight:
-                    MoveLeftRight();
+                case MovementType.Down:
+                    MoveDown();
+                    break;
+                case MovementType.Left:
+                    MoveLeft();
+                    break;
+                case MovementType.Right:
+                    MoveRight();
                     break;
             }
         }
 
-        private void MoveUpDown()
+        private void MoveUp()
         {
-            if (_movingDown)
-            {
-                transform.position += _speed * Time.deltaTime * transform.up;
-                if (transform.position.y >= _upBoundary)
-                {
-                    _movingDown = false;
-                }
-            }
-            else
-            {
-                transform.position += _speed * -1 * Time.deltaTime * transform.up;
-                if (transform.position.y <= _downBoundary)
-                {
-                    _movingDown = true;
-                }
-            }
+            transform.position += transform.up * _speed * Time.deltaTime;
         }
 
-        private void MoveLeftRight()
+        private void MoveDown()
         {
-            if (_movingRight)
+            transform.position += transform.up * _speed * -1 * Time.deltaTime;
+        }
+
+        private void MoveLeft()
+        {
+            transform.position += transform.right * _speed * -1 * Time.deltaTime;
+        }
+
+        private void MoveRight()
+        {
+            transform.position += _speed * Time.deltaTime * transform.right;
+        }
+
+        void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.layer == _boundaryLayer)
             {
-                transform.position += _speed * Time.deltaTime * transform.right;
-                if (transform.position.x >= _rightBoundary)
-                {
-                    _movingRight = false;
-                }
-            }
-            else
-            {
-                transform.position += _speed * -1 * Time.deltaTime * transform.right;
-                if (transform.position.x <= _leftBoundary)
-                {
-                    _movingRight = true;
-                }
+                Destroy(gameObject);
             }
         }
     }
