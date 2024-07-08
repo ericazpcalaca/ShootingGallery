@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace ShootingGallery
 {
@@ -11,7 +8,7 @@ namespace ShootingGallery
         [SerializeField] private uint _initPoolSize;
         [SerializeField] private GameObject _objectToPool;
 
-        // store the pooled objects in a collection
+        // Store the pooled objects in a collection
         private Stack<GameObject> _targetPool;
 
         // Start is called before the first frame update
@@ -28,13 +25,32 @@ namespace ShootingGallery
                 GameObject _target = Instantiate(_objectToPool);
                 _target.SetActive(false);
                 _targetPool.Push(_target);
-
             }
         }
 
-        public GameObject GetFromPool()
+        public void Spawn(Vector3 worldPos, TargetMovement.MovementType movementType, float speed)
         {
-            if( _targetPool.Count > 0)
+            var target = GetFromPool();
+            target.transform.position = worldPos;
+
+            var targetMovement = target.GetComponent<TargetMovement>();
+            if (targetMovement != null)
+            {
+                targetMovement.CanMove = true;
+                targetMovement.CurrentMovementType = movementType;
+                targetMovement.Speed = speed;
+            }
+        }
+
+        public void ReturnToPool(GameObject target)
+        {
+            _targetPool.Push(target);
+            target.SetActive(false);
+        }
+
+        private GameObject GetFromPool()
+        {
+            if (_targetPool.Count > 0)
             {
                 GameObject _target = _targetPool.Pop();
                 _target.SetActive(true);
@@ -45,13 +61,6 @@ namespace ShootingGallery
                 GameObject _target = Instantiate(_objectToPool);
                 return _target;
             }
-
-        }
-
-        public void ReturnToPool(GameObject target)
-        {
-            _targetPool.Push(target);
-            target.SetActive(false);
         }
     }
 }
