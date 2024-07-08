@@ -225,6 +225,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1532201375}
     m_Modifications:
+    - target: {fileID: 43684544166748105, guid: 01866d357c092d642bf8d66afddd2d3b,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 86340531139243203, guid: 01866d357c092d642bf8d66afddd2d3b,
         type: 3}
       propertyPath: m_Name
@@ -299,6 +304,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 593742437}
+  - component: {fileID: 593742438}
   m_Layer: 0
   m_Name: Targets
   m_TagString: Untagged
@@ -325,6 +331,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &593742438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593742436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3fb26a9dece674a9075ae36e9aa3ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initPoolSize: 10
+  _objectToPool: {fileID: 3316947896659680966}
 --- !u!1001 &610176287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -601,6 +621,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 593742437}
     m_Modifications:
+    - target: {fileID: 301390896956762168, guid: f38240a3622d623489af38b3a292dbe5,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2202735860831857215, guid: f38240a3622d623489af38b3a292dbe5,
         type: 3}
       propertyPath: m_RootOrder
@@ -1019,6 +1044,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 593742437}
     m_Modifications:
+    - target: {fileID: 301390896956762168, guid: f38240a3622d623489af38b3a292dbe5,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2202735860831857215, guid: f38240a3622d623489af38b3a292dbe5,
         type: 3}
       propertyPath: m_RootOrder
@@ -1105,3 +1135,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f38240a3622d623489af38b3a292dbe5, type: 3}
+--- !u!1 &3316947896659680966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7523105685032556308, guid: f38240a3622d623489af38b3a292dbe5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3316947896659680965}
+  m_PrefabAsset: {fileID: 0}

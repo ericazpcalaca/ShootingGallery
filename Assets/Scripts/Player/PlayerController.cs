@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.UI.Image;
 
 namespace ShootingGallery
 {
@@ -46,7 +45,7 @@ namespace ShootingGallery
 
             if (Physics.Raycast(startPos, _targetIndicator.forward, out RaycastHit hitInfo, _raycastDistance, _targetLayer.value))
             {
-                Destroy(hitInfo.collider.gameObject);
+                TargetManager.Instance.ReturnToPool(hitInfo.collider.gameObject);
             }           
         }
 

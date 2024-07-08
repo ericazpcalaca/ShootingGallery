@@ -9,13 +9,24 @@ namespace ShootingGallery
             Up,
             Down,
             Left,
-            Right          
+            Right
         }
 
         [SerializeField] private MovementType _movementType;
         [SerializeField] private float _speed = 2f;
-        [SerializeField] private string _boundaryLayerName; 
-        
+        [SerializeField] private string _boundaryLayerName;
+
+        public float Speed
+        {
+            get { return _speed; }
+            set { _speed = value; }
+        }
+
+        public MovementType CurrentMovementType
+        {
+            get { return _movementType; }
+            set { _movementType = value; }
+        }
         public bool CanMove { get; set; }
 
         private int _boundaryLayer;
@@ -72,7 +83,7 @@ namespace ShootingGallery
         {
             if (collision.gameObject.layer == _boundaryLayer)
             {
-                Destroy(gameObject);
+                TargetManager.Instance.ReturnToPool(gameObject);
             }
         }
     }
