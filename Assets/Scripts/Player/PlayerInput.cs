@@ -40,12 +40,14 @@ namespace ShootingGallery
 
         public void OnAllowShooting(InputAction.CallbackContext context)
         {
+            Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             _canShoot = true;
         }
 
         public void OnPauseShooting(InputAction.CallbackContext context)
         {
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             _canShoot = false;
         }
