@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace ShootingGallery
@@ -15,6 +16,8 @@ namespace ShootingGallery
         [SerializeField] private float _minYaw;   
         [SerializeField] private float _maxYaw ;
         [SerializeField] private bool _debugEnabled;
+
+        public static Action<uint> UpdateScore;
 
         private PlayerInput _playerInput;
         private float _currentCameraYaw;
@@ -54,9 +57,11 @@ namespace ShootingGallery
                 GameObject target = hitInfo.collider.gameObject;
                 var targetMovement = target.GetComponent<TargetController>();
                 _playerScore += targetMovement.TargetScore;
+
+                UpdateScore?.Invoke(_playerScore);
+
                 TargetManager.Instance.ReturnToPool(target);
             }
-            Debug.Log($"[{typeof(PlayerController).Name}] - Player Score: {_playerScore}");
         }
 
         private void OnPlayerMoveCamera(Vector2 posDelta)
