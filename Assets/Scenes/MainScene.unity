@@ -731,6 +731,57 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5276501649625090380, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276501649625090380, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: m_Events.m_Signals.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276501649625090380, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: m_Events.m_Signals.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b3e9be867e2cf4844be0561bde8874d8,
+        type: 2}
+    - target: {fileID: 5276501649625090380, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276501649625090380, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276501649625090380, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1299899565}
+    - target: {fileID: 5276501649625090380, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276501649625090380, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276501649625090380, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShootingGallery.TimerHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276501649625090380, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -742,6 +793,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 388102835}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1299899565 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3203541924799149577, guid: 86546fa01e89400458427c0db625f723,
+    type: 3}
+  m_PrefabInstance: {fileID: 861280672}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b92fba94e6f00459b773a6c3a5c17b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1299899566 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5276501649625090380, guid: 86546fa01e89400458427c0db625f723,

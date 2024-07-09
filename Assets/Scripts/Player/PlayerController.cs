@@ -32,14 +32,15 @@ namespace ShootingGallery
             _playerScore = 0;
 
             CalculateInitialCameraRotation();
-            EndGameHandler.OnGameEnd += HandleGameEnd;
+
+            GameStateManager.OnGameEnd += HandleGameEnd;
         }
 
         private void OnDestroy()
         {
             _playerInput.OnPlayerShoot -= OnPlayerShoot;
             _playerInput.OnPlayerMoveCamera -= OnPlayerMoveCamera;
-            EndGameHandler.OnGameEnd -= HandleGameEnd;
+            GameStateManager.OnGameEnd -= HandleGameEnd;
         }
 
         private void Update()
