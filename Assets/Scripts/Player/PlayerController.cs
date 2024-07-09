@@ -10,6 +10,10 @@ namespace ShootingGallery
         [SerializeField] private float _raycastDistance = 15f;
         [SerializeField] private float _cameraRotationSpeed = 1;
         [SerializeField] private float _minRotDelta = 0.3f;
+        [SerializeField] private float _minPitch; 
+        [SerializeField] private float _maxPitch;  
+        [SerializeField] private float _minYaw;   
+        [SerializeField] private float _maxYaw ;
         [SerializeField] private bool _debugEnabled;
 
         private PlayerInput _playerInput;
@@ -75,19 +79,13 @@ namespace ShootingGallery
 
         private void UpdateRotation()
         {
-            // Clamp rotations so their values are limited to 360 degrees
-            _currentCameraYaw = ClampAngle(_currentCameraYaw, float.MinValue, float.MaxValue);
-            _currentCameraPitch = ClampAngle(_currentCameraPitch, float.MinValue, float.MaxValue);
+            // Clamp the yaw and pitch angles to the specified ranges
+            _currentCameraYaw = Mathf.Clamp(_currentCameraYaw, _minYaw, _maxYaw);
+            _currentCameraPitch = Mathf.Clamp(_currentCameraPitch, _minPitch, _maxPitch);
 
             // Player camera will follow this target
             transform.rotation = Quaternion.Euler(_currentCameraPitch, _currentCameraYaw, 0.0f);
         }
-
-        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
-        {
-            if (lfAngle < -360f) lfAngle += 360f;
-            if (lfAngle > 360f) lfAngle -= 360f;
-            return Mathf.Clamp(lfAngle, lfMin, lfMax);
-        }
+        
     }
 }
