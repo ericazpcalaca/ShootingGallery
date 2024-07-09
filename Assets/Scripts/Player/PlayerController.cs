@@ -19,12 +19,14 @@ namespace ShootingGallery
         private PlayerInput _playerInput;
         private float _currentCameraYaw;
         private float _currentCameraPitch;
+        private uint _playerScore;
 
         private void Awake()
         {
             _playerInput = GetComponent<PlayerInput>();
             _playerInput.OnPlayerShoot += OnPlayerShoot;
             _playerInput.OnPlayerMoveCamera += OnPlayerMoveCamera;
+            _playerScore = 0;
 
             CalculateInitialCameraRotation();
         }
@@ -49,8 +51,12 @@ namespace ShootingGallery
 
             if (Physics.Raycast(startPos, _targetIndicator.forward, out RaycastHit hitInfo, _raycastDistance, _targetLayer.value))
             {
-                TargetManager.Instance.ReturnToPool(hitInfo.collider.gameObject);
-            }           
+                GameObject target = hitInfo.collider.gameObject;
+                var targetMovement = target.GetComponent<TargetController>();
+                _playerScore += targetMovement.TargetScore;
+                TargetManager.Instance.ReturnToPool(target);
+            }
+            Debug.Log($"[{typeof(PlayerController).Name}] - Player Score: {_playerScore}");
         }
 
         private void OnPlayerMoveCamera(Vector2 posDelta)

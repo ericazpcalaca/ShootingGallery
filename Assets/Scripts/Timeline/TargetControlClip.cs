@@ -14,6 +14,7 @@ namespace ShootingGallery
 
         public TargetController.MovementType TargetMovementType;
         public float MovementSpeed = 2f;
+        public uint Points;
         public Vector3 TargetPosition = Vector3.zero;
 
         private readonly TargetControlBehaviour _template = new(); //!< The template used when creating the clip

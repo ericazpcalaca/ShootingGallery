@@ -14,6 +14,7 @@ namespace ShootingGallery
 
         [SerializeField] private MovementType _movementType;
         [SerializeField] private float _speed = 2f;
+        [SerializeField] private uint _targetScore;
         [SerializeField] private string _boundaryLayerName;
 
         public float Speed
@@ -26,6 +27,12 @@ namespace ShootingGallery
         {
             get { return _movementType; }
             set { _movementType = value; }
+        }
+
+        public uint TargetScore
+        {
+            get { return _targetScore; }
+            set { _targetScore = value; }
         }
         public bool CanMove { get; set; }
 

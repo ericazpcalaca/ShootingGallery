@@ -30,7 +30,7 @@ namespace ShootingGallery
                 return;
             }
 
-            TargetManager.Instance.Spawn(ControlClip.TargetPosition, ControlClip.TargetMovementType, ControlClip.MovementSpeed);
+            TargetManager.Instance.Spawn(ControlClip.TargetPosition, ControlClip.TargetMovementType, ControlClip.MovementSpeed, ControlClip.Points);
         }
     }
 }
