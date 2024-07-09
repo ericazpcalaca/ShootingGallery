@@ -499,6 +499,8 @@ GameObject:
   - component: {fileID: 674152601316814282}
   - component: {fileID: 6672076416279976420}
   - component: {fileID: 7474327676530424468}
+  - component: {fileID: 5276501649625090380}
+  - component: {fileID: 3203541924799149577}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -572,6 +574,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreText: {fileID: 1192289481034334932}
+--- !u!114 &5276501649625090380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219860346803928583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: d85a9a6a27ab3fc429b4f3b354365134, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3203541924799149577}
+          m_TargetAssemblyTypeName: ShootingGallery.EndGameHandler, Assembly-CSharp
+          m_MethodName: EndGame
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &3203541924799149577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219860346803928583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b92fba94e6f00459b773a6c3a5c17b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5901961504281709608
 GameObject:
   m_ObjectHideFlags: 0

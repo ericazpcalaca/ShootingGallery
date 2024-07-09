@@ -32,12 +32,14 @@ namespace ShootingGallery
             _playerScore = 0;
 
             CalculateInitialCameraRotation();
+            EndGameHandler.OnGameEnd += HandleGameEnd;
         }
 
         private void OnDestroy()
         {
             _playerInput.OnPlayerShoot -= OnPlayerShoot;
             _playerInput.OnPlayerMoveCamera -= OnPlayerMoveCamera;
+            EndGameHandler.OnGameEnd -= HandleGameEnd;
         }
 
         private void Update()
@@ -97,6 +99,10 @@ namespace ShootingGallery
             // Player camera will follow this target
             transform.rotation = Quaternion.Euler(_currentCameraPitch, _currentCameraYaw, 0.0f);
         }
-        
+
+        private void HandleGameEnd()
+        {
+            Debug.Log("PlayerController received game end notification.");
+        }
     }
 }
