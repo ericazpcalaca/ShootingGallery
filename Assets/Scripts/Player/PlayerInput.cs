@@ -9,7 +9,7 @@ namespace ShootingGallery
     {
         public Action OnPlayerShoot;
         public Action<Vector2> OnPlayerMoveCamera;
-        
+
         private Input _input;
         private bool _canShoot;
 
@@ -18,6 +18,8 @@ namespace ShootingGallery
             _input = new();
             _input.Player.AddCallbacks(this);
             _input.Player.Enable();
+
+            ShowMouse(false);
         }
 
         private void OnDestroy()
@@ -28,28 +30,36 @@ namespace ShootingGallery
 
         public void OnShoot(InputAction.CallbackContext context)
         {
-            if (_canShoot && context.performed) 
+            if (_canShoot && context.performed)
                 OnPlayerShoot?.Invoke();
         }
 
         public void OnMoveCamera(InputAction.CallbackContext context)
         {
-            if (_canShoot && context.performed)
-                OnPlayerMoveCamera?.Invoke(context.ReadValue<Vector2>());
+            if (!_canShoot || !context.performed)
+                return;
+
+            OnPlayerMoveCamera?.Invoke(context.ReadValue<Vector2>());
         }
 
         public void OnAllowShooting(InputAction.CallbackContext context)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            _canShoot = true;
+            if (GameStateManager.Instance.HasGameEnded)
+                return;
+
+            ShowMouse(false);
         }
 
         public void OnPauseShooting(InputAction.CallbackContext context)
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            _canShoot = false;
+            ShowMouse(true);
+        }
+
+        public void ShowMouse(bool show)
+        {
+            Cursor.lockState = show ? CursorLockMode.None : CursorLockMode.Confined;
+            Cursor.visible = show;
+            _canShoot = !show;
         }
     }
 }

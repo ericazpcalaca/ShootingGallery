@@ -103,7 +103,7 @@ namespace ShootingGallery
 
         private void HandleGameEnd()
         {
-            Debug.Log("PlayerController received game end notification.");
+            _playerInput.ShowMouse(true);
         }
     }
 }

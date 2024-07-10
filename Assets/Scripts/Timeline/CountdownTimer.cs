@@ -5,17 +5,17 @@ namespace ShootingGallery
 {
     public class CountdownTimer : MonoBehaviour
     {
-        [SerializeField] private float countdownTime;
-        [SerializeField] private TextMeshProUGUI countdownText;
+        [SerializeField] private float _countdownTime;
+        [SerializeField] private TextMeshProUGUI _countdownText;
 
         private float _currentTime;
         private bool _isCountingDown = false;
 
         private void Start()
         {
-            _currentTime = countdownTime;
-            GameStateManager.Instance.OnGameStart += StartCountdown;
+            _currentTime = _countdownTime;
             UpdateCountdownText();
+            GameStateManager.Instance.OnGameStart += StartCountdown;
         }
 
         private void OnDestroy()
@@ -43,12 +43,14 @@ namespace ShootingGallery
         {
             int minutes = Mathf.FloorToInt(_currentTime / 60);
             int seconds = Mathf.FloorToInt(_currentTime % 60);
-            countdownText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            _countdownText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
 
         private void StartCountdown()
         {
+            _currentTime = _countdownTime;
             _isCountingDown = true;
+            UpdateCountdownText();
         }
     }
 }

@@ -742,6 +742,11 @@ PrefabInstance:
       propertyPath: _cameraLookAt
       value: 
       objectReference: {fileID: 1383831221}
+    - target: {fileID: 744336983337649735, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: _playableDirector
+      value: 
+      objectReference: {fileID: 663134398}
     - target: {fileID: 3481073572777596655, guid: 86546fa01e89400458427c0db625f723,
         type: 3}
       propertyPath: m_RootOrder
@@ -851,6 +856,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6034802551734409694, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.023925781
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955670310539289432, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.023925781
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

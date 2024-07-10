@@ -10,17 +10,20 @@ namespace ShootingGallery
 
         public Action OnGameStart;
         public Action OnGameEnd;
+        public bool HasGameEnded { get; private set; }
 
         public void StartGame()
         {
             _playableDirector?.Play();
             OnGameStart?.Invoke();
+            HasGameEnded = false;
         }
 
         public void EndGame()
         {
             _playableDirector?.Stop();
             OnGameEnd?.Invoke();
+            HasGameEnded = true;
         }
     }
 }
