@@ -57,7 +57,7 @@ namespace ShootingGallery
 
         public void ShowMouse(bool show)
         {
-            Cursor.lockState = show ? CursorLockMode.None : CursorLockMode.Confined;
+            Cursor.lockState = show ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = show;
             _canShoot = !show;
         }

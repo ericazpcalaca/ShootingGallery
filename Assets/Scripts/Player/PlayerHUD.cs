@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace ShootingGallery
     public class PlayerHUD : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _scoreText;
+        [SerializeField] private TextMeshProUGUI _maxScoreText;
 
         PlayerController _playerController;
 
@@ -14,6 +16,7 @@ namespace ShootingGallery
         {
             _playerController = GetComponent<PlayerController>();
             _playerController.UpdateScore += OnScoreUpdated;
+            _playerController.UpdateMaxScore += OnMaxScoreUpdate;
         }
 
         private void OnDestroy()
@@ -21,6 +24,7 @@ namespace ShootingGallery
             if (_playerController != null)
             {
                 _playerController.UpdateScore -= OnScoreUpdated;
+                _playerController.UpdateMaxScore -= OnMaxScoreUpdate;
             }
         }
 
@@ -28,5 +32,14 @@ namespace ShootingGallery
         {
             _scoreText.text = $"{newScore}"; 
         }
+
+        private void OnMaxScoreUpdate(uint maxScore)
+        {
+            _maxScoreText.text = $"{maxScore}";
+        }
+
+
+
+
     }
 }

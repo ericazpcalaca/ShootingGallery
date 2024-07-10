@@ -18,11 +18,13 @@ namespace ShootingGallery
         [SerializeField] private bool _debugEnabled;
 
         public Action<uint> UpdateScore;
+        public Action<uint> UpdateMaxScore;
 
         private PlayerInput _playerInput;
         private float _currentCameraYaw;
         private float _currentCameraPitch;
         private uint _playerScore;
+        private uint _playerMaxScore;
 
         private void Awake()
         {
@@ -32,7 +34,6 @@ namespace ShootingGallery
             _playerScore = 0;
 
             CalculateInitialCameraRotation();
-
             GameStateManager.Instance.OnGameEnd += HandleGameEnd;
         }
 
@@ -103,7 +104,17 @@ namespace ShootingGallery
 
         private void HandleGameEnd()
         {
+            _playerMaxScore = (uint) PlayerPrefs.GetInt("HighScore", 0);
+            if (_playerScore > _playerMaxScore)
+            {
+                PlayerPrefs.SetInt("HighScore", (int)_playerScore);
+                _playerMaxScore = _playerScore;
+            }
+            UpdateMaxScore?.Invoke(_playerMaxScore);
             _playerInput.ShowMouse(true);
+            _playerScore = 0;
+            UpdateScore?.Invoke(_playerScore);
+            
         }
     }
 }
