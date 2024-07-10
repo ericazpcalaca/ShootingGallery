@@ -32,9 +32,14 @@ namespace ShootingGallery
                 return;
             }
 
-            Debug.Log("Run command: " + ControlClip.Command);
-
-            //TargetManager.Instance.Spawn(ControlClip.TargetPosition, ControlClip.TargetMovementType, ControlClip.MovementSpeed, ControlClip.Points);
+            if (ControlClip.Command == GameManagerClip.GameManagerCommand.StartGame)
+            {
+                GameStateManager.Instance.StartGame();
+            }
+            else if (ControlClip.Command == GameManagerClip.GameManagerCommand.EndGame)
+            {
+                GameStateManager.Instance.EndGame();
+            }
         }
     }
 }

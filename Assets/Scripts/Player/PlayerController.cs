@@ -17,7 +17,7 @@ namespace ShootingGallery
         [SerializeField] private float _maxYaw ;
         [SerializeField] private bool _debugEnabled;
 
-        public static Action<uint> UpdateScore;
+        public Action<uint> UpdateScore;
 
         private PlayerInput _playerInput;
         private float _currentCameraYaw;
@@ -33,14 +33,14 @@ namespace ShootingGallery
 
             CalculateInitialCameraRotation();
 
-            GameStateManager.OnGameEnd += HandleGameEnd;
+            GameStateManager.Instance.OnGameEnd += HandleGameEnd;
         }
 
         private void OnDestroy()
         {
             _playerInput.OnPlayerShoot -= OnPlayerShoot;
             _playerInput.OnPlayerMoveCamera -= OnPlayerMoveCamera;
-            GameStateManager.OnGameEnd -= HandleGameEnd;
+            GameStateManager.Instance.OnGameEnd -= HandleGameEnd;
         }
 
         private void Update()

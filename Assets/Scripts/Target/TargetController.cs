@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace ShootingGallery
@@ -42,6 +43,12 @@ namespace ShootingGallery
         {
             CanMove = true;
             _boundaryLayer = LayerMask.NameToLayer(_boundaryLayerName);
+            GameStateManager.Instance.OnGameEnd += HandleGameEnd;
+        }
+
+        private void OnDestroy()
+        {
+            GameStateManager.Instance.OnGameEnd -= HandleGameEnd;
         }
 
         private void Update()
@@ -66,6 +73,14 @@ namespace ShootingGallery
             }
         }
 
+        void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.layer == _boundaryLayer)
+            {
+                TargetManager.Instance.ReturnToPool(gameObject);
+            }
+        }
+
         private void MoveUp()
         {
             transform.position += transform.up * _speed * Time.deltaTime;
@@ -86,12 +101,9 @@ namespace ShootingGallery
             transform.position += _speed * Time.deltaTime * transform.right;
         }
 
-        void OnCollisionEnter(Collision collision)
+        private void HandleGameEnd()
         {
-            if (collision.gameObject.layer == _boundaryLayer)
-            {
-                TargetManager.Instance.ReturnToPool(gameObject);
-            }
+            TargetManager.Instance.ReturnToPool(gameObject);
         }
     }
 }

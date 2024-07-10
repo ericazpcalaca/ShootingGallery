@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -17,8 +14,13 @@ namespace ShootingGallery
         private void Start()
         {
             _currentTime = countdownTime;
+            GameStateManager.Instance.OnGameStart += StartCountdown;
             UpdateCountdownText();
-            StartCountdown();
+        }
+
+        private void OnDestroy()
+        {
+            GameStateManager.Instance.OnGameStart -= StartCountdown;
         }
 
         private void Update()
@@ -30,7 +32,7 @@ namespace ShootingGallery
                 {
                     _currentTime = 0;
                     _isCountingDown = false;
-                    
+
                     Debug.Log("Game Over! from Countdown");
                 }
                 UpdateCountdownText();

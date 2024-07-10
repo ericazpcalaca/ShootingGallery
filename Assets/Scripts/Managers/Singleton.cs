@@ -9,7 +9,7 @@ namespace ShootingGallery
         {
             get
             {
-                if (_instance == null)
+                if ((object)_instance == null)
                 {
                     _instance = (T)FindAnyObjectByType(typeof(T));
                     if (_instance == null)

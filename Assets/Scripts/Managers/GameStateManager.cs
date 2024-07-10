@@ -1,22 +1,25 @@
 using System;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace ShootingGallery
 {
-    public class GameStateManager : MonoBehaviour
+    public class GameStateManager : Singleton<GameStateManager>
     {
-        public static event Action OnGameStart;
-        public static event Action OnGameEnd;
+        [SerializeField] PlayableDirector _playableDirector;
+
+        public Action OnGameStart;
+        public Action OnGameEnd;
 
         public void StartGame()
         {
-            Debug.Log("Game Start");
+            _playableDirector?.Play();
             OnGameStart?.Invoke();
         }
 
         public void EndGame()
         {
-            Debug.Log("Game Ended");
+            _playableDirector?.Stop();
             OnGameEnd?.Invoke();
         }
     }
