@@ -44,12 +44,15 @@ namespace ShootingGallery
             CanMove = true;
             _boundaryLayer = LayerMask.NameToLayer(_boundaryLayerName);
             GameStateManager.Instance.OnGameEnd += HandleGameEnd;
+            GameStateManager.Instance.OnGameStart += HandleGameStart;
         }
 
         private void OnDestroy()
         {
             GameStateManager.Instance.OnGameEnd -= HandleGameEnd;
+            GameStateManager.Instance.OnGameStart -= HandleGameStart;
         }
+
 
         private void Update()
         {
@@ -102,6 +105,11 @@ namespace ShootingGallery
         }
 
         private void HandleGameEnd()
+        {
+            TargetManager.Instance.ReturnToPool(gameObject);
+        }
+        
+        private void HandleGameStart()
         {
             TargetManager.Instance.ReturnToPool(gameObject);
         }

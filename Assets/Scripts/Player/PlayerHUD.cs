@@ -9,6 +9,7 @@ namespace ShootingGallery
     {
         [SerializeField] private TextMeshProUGUI _scoreText;
         [SerializeField] private TextMeshProUGUI _maxScoreText;
+        [SerializeField] private GameObject _pauseScreen;
 
         PlayerController _playerController;
 
@@ -17,6 +18,17 @@ namespace ShootingGallery
             _playerController = GetComponent<PlayerController>();
             _playerController.UpdateScore += OnScoreUpdated;
             _playerController.UpdateMaxScore += OnMaxScoreUpdate;
+            GameStateManager.Instance.OnGamePause += OnGamePause;
+            _pauseScreen.SetActive(false);
+        }
+
+        private void OnUpdate()
+        {
+            if (GameStateManager.Instance.HasGameEnded)
+                _pauseScreen.SetActive(false);
+
+            if(GameStateManager.Instance.HasGamePaused)
+                _pauseScreen.SetActive(true);
         }
 
         private void OnDestroy()
@@ -25,6 +37,7 @@ namespace ShootingGallery
             {
                 _playerController.UpdateScore -= OnScoreUpdated;
                 _playerController.UpdateMaxScore -= OnMaxScoreUpdate;
+                GameStateManager.Instance.OnGamePause -= OnGamePause;
             }
         }
 
@@ -38,7 +51,10 @@ namespace ShootingGallery
             _maxScoreText.text = $"{maxScore}";
         }
 
-
+        private void OnGamePause(bool _isPaused)
+        {
+            _pauseScreen.SetActive(_isPaused);
+        }
 
 
     }

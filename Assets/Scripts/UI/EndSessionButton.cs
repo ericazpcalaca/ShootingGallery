@@ -20,16 +20,16 @@ namespace ShootingGallery
             _btnExit.onClick.AddListener(OnExitButtonClick);
         }
 
-        private void OnExitButtonClick()
-        {
-            Application.Quit();
-        }
-
         private void OnRetryButtonClick()
         {
             _playableDirector.time = 0;
             _playableDirector.Play();
             GameStateManager.Instance.StartGame();
+        }
+
+        private void OnExitButtonClick()
+        {
+            Application.Quit();
         }
     }
 }

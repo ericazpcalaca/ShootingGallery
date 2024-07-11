@@ -12,13 +12,14 @@ namespace ShootingGallery
 
         private Input _input;
         private bool _canShoot;
+        private bool _isPaused;
 
         private void Awake()
         {
             _input = new();
             _input.Player.AddCallbacks(this);
             _input.Player.Enable();
-
+            _isPaused = false;
             ShowMouse(false);
         }
 
@@ -30,13 +31,13 @@ namespace ShootingGallery
 
         public void OnShoot(InputAction.CallbackContext context)
         {
-            if (_canShoot && context.performed)
+            if (_canShoot && context.performed && !_isPaused)
                 OnPlayerShoot?.Invoke();
         }
 
         public void OnMoveCamera(InputAction.CallbackContext context)
         {
-            if (!_canShoot || !context.performed)
+            if (!_canShoot || !context.performed || _isPaused)
                 return;
 
             OnPlayerMoveCamera?.Invoke(context.ReadValue<Vector2>());
@@ -44,7 +45,7 @@ namespace ShootingGallery
 
         public void OnAllowShooting(InputAction.CallbackContext context)
         {
-            if (GameStateManager.Instance.HasGameEnded)
+            if (GameStateManager.Instance.HasGameEnded || _isPaused)
                 return;
 
             ShowMouse(false);
@@ -52,6 +53,8 @@ namespace ShootingGallery
 
         public void OnPauseShooting(InputAction.CallbackContext context)
         {
+            _isPaused = true;
+            GameStateManager.Instance.GamePause(_isPaused);
             ShowMouse(true);
         }
 
@@ -61,5 +64,6 @@ namespace ShootingGallery
             Cursor.visible = show;
             _canShoot = !show;
         }
+
     }
 }

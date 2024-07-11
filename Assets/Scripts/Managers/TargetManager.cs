@@ -8,10 +8,8 @@ namespace ShootingGallery
         [SerializeField] private uint _initPoolSize;
         [SerializeField] private GameObject _objectToPool;
 
-        // Store the pooled objects in a collection
         private Stack<GameObject> _targetPool;
 
-        // Start is called before the first frame update
         private void Start()
         {
             SetupPool();

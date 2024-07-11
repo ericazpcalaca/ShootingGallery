@@ -484,7 +484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b92fba94e6f00459b773a6c3a5c17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playableDirector: {fileID: 593742439}
+  _targetPlayableDirector: {fileID: 593742439}
+  _gamePlayableDirector: {fileID: 663134398}
 --- !u!4 &663134397
 Transform:
   m_ObjectHideFlags: 0
@@ -862,6 +863,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.023925781
       objectReference: {fileID: 0}
+    - target: {fileID: 7717082333260660881, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: _gamePlayableDirector
+      value: 
+      objectReference: {fileID: 663134398}
+    - target: {fileID: 7717082333260660881, guid: 86546fa01e89400458427c0db625f723,
+        type: 3}
+      propertyPath: _targetPlayableDirector
+      value: 
+      objectReference: {fileID: 593742439}
     - target: {fileID: 8955670310539289432, guid: 86546fa01e89400458427c0db625f723,
         type: 3}
       propertyPath: m_AnchoredPosition.x
