@@ -16,11 +16,13 @@ namespace ShootingGallery
             _currentTime = _countdownTime;
             UpdateCountdownText();
             GameStateManager.Instance.OnGameStart += StartCountdown;
+            GameStateManager.Instance.OnGamePause += HandleGamePause;
         }
 
         private void OnDestroy()
         {
             GameStateManager.Instance.OnGameStart -= StartCountdown;
+            GameStateManager.Instance.OnGamePause -= HandleGamePause;
         }
 
         private void Update()
@@ -32,8 +34,6 @@ namespace ShootingGallery
                 {
                     _currentTime = 0;
                     _isCountingDown = false;
-
-                    Debug.Log("Game Over! from Countdown");
                 }
                 UpdateCountdownText();
             }
@@ -50,6 +50,34 @@ namespace ShootingGallery
         {
             _currentTime = _countdownTime;
             _isCountingDown = true;
+            UpdateCountdownText();
+        }
+        private void HandleGamePause(bool isPaused)
+        {
+            if (isPaused)
+            {
+                PauseCountdown();
+            }
+            else
+            {
+                ResumeCountdown();
+            }
+        }
+
+        public void PauseCountdown()
+        {
+            _isCountingDown = false;
+        }
+
+        public void ResumeCountdown()
+        {
+            _isCountingDown = true;
+        }
+
+        public void RestartCountdown()
+        {
+            _currentTime = _countdownTime;
+            _isCountingDown = false;
             UpdateCountdownText();
         }
     }

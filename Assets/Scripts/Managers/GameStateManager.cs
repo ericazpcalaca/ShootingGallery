@@ -31,10 +31,10 @@ namespace ShootingGallery
             HasGamePaused = false;
         }
 
-        public void GamePause(bool _isPaused)
+        public void GamePause(bool isPaused)
         {
-            OnGamePause?.Invoke(_isPaused);
-            if (_isPaused)
+            OnGamePause?.Invoke(isPaused);
+            if (isPaused)
             {
                 _targetPlayableDirector.Pause();
                 _gamePlayableDirector.Pause();
@@ -44,7 +44,7 @@ namespace ShootingGallery
                 _targetPlayableDirector.Play();
                 _gamePlayableDirector.Play();
             }
-            HasGamePaused = _isPaused;
+            HasGamePaused = isPaused;
         }
     }
 }

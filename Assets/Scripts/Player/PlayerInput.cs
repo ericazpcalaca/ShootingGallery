@@ -64,6 +64,12 @@ namespace ShootingGallery
             Cursor.visible = show;
             _canShoot = !show;
         }
+        public void ResumeGame()
+        {
+            _isPaused = false;
+            GameStateManager.Instance.GamePause(_isPaused);
+            ShowMouse(false);
+        }
 
     }
 }

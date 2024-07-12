@@ -14,17 +14,20 @@ namespace ShootingGallery
         [SerializeField] private Button _btnExit;
         [SerializeField] private PlayableDirector _playableDirector;
 
+        private CountdownTimer _countdownTimer;
+
         private void Start()
         {
             _btnRetry.onClick.AddListener(OnRetryButtonClick);
             _btnExit.onClick.AddListener(OnExitButtonClick);
+            _countdownTimer = GetComponentInParent<CountdownTimer>();
         }
 
         private void OnRetryButtonClick()
         {
             _playableDirector.time = 0;
             _playableDirector.Play();
-            GameStateManager.Instance.StartGame();
+            _countdownTimer.RestartCountdown();
         }
 
         private void OnExitButtonClick()

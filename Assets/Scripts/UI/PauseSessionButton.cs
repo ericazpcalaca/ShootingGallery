@@ -15,6 +15,7 @@ namespace ShootingGallery
         [SerializeField] private PlayableDirector _targetPlayableDirector;
 
         private PlayerInput _playerInput;
+        private CountdownTimer _countdownTimer;
 
         private void Start()
         {
@@ -22,23 +23,31 @@ namespace ShootingGallery
             _btnPauseRetry.onClick.AddListener(OnPauseRetryButtonClick);
             _btnPauseRetry.onClick.AddListener(OnPauseExitButtonClick);       
             
+            _playerInput = GetComponentInParent<PlayerInput>();
+            _countdownTimer = GetComponentInParent<CountdownTimer>();
         }
 
         private void OnPauseContinueButtonClick()
         {
-            Debug.Log("Continue");
-            _gamePlayableDirector.Play();
-            _targetPlayableDirector.Play();
             GameStateManager.Instance.GamePause(false);
+            _playerInput.ResumeGame();
+            _countdownTimer.ResumeCountdown();
         }
 
         private void OnPauseRetryButtonClick()
         {
-            _gamePlayableDirector.time = 0;
-            _gamePlayableDirector.Play();
-            _targetPlayableDirector.time = 0;
             GameStateManager.Instance.GamePause(false);
-            GameStateManager.Instance.StartGame();
+
+            _targetPlayableDirector.Stop();
+            _targetPlayableDirector.time = 0;
+
+            _gamePlayableDirector.time = 0; 
+            _gamePlayableDirector.Play();
+
+            _playerInput.ResumeGame();
+            _countdownTimer.RestartCountdown();
+            GameStateManager.Instance.EndGame();
+
         }
 
         private void OnPauseExitButtonClick()
