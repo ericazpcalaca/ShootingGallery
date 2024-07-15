@@ -19,6 +19,7 @@ namespace ShootingGallery
 
         public Action<uint> UpdateScore;
         public Action<uint> UpdateMaxScore;
+        public Action<uint> UpdateFinalScore;
 
         private PlayerInput _playerInput;
         private float _currentCameraYaw;
@@ -32,7 +33,7 @@ namespace ShootingGallery
             _playerInput.OnPlayerShoot += OnPlayerShoot;
             _playerInput.OnPlayerMoveCamera += OnPlayerMoveCamera;
             _playerScore = 0;
-
+            
             CalculateInitialCameraRotation();
             GameStateManager.Instance.OnGameEnd += HandleGameEnd;
             GameStateManager.Instance.OnGamePause += HandleGamePause;
@@ -115,6 +116,7 @@ namespace ShootingGallery
                 _playerMaxScore = _playerScore;
             }
             UpdateMaxScore?.Invoke(_playerMaxScore);
+            UpdateFinalScore?.Invoke(_playerScore);
             _playerInput.ShowMouse(true);
             _playerScore = 0;
             UpdateScore?.Invoke(_playerScore);

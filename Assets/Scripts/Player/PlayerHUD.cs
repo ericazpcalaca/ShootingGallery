@@ -8,8 +8,10 @@ namespace ShootingGallery
     public class PlayerHUD : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _scoreText;
+        [SerializeField] private TextMeshProUGUI _scoreFinalText;
         [SerializeField] private TextMeshProUGUI _maxScoreText;
         [SerializeField] private GameObject _pauseScreen;
+        [SerializeField] private GameObject _scoreScreen;
 
         PlayerController _playerController;
 
@@ -18,13 +20,19 @@ namespace ShootingGallery
             _playerController = GetComponent<PlayerController>();
             _playerController.UpdateScore += OnScoreUpdated;
             _playerController.UpdateMaxScore += OnMaxScoreUpdate;
+            _playerController.UpdateFinalScore += OnFinalScoreUpdate;
 
+            GameStateManager.Instance.OnGameStart += OnGameStart;
             GameStateManager.Instance.OnGamePause += OnGamePause;
             GameStateManager.Instance.OnGameEnd += OnGameEnd;
             GameStateManager.Instance.OnGameRestart += OnGameRestart;
-            _pauseScreen.SetActive(false);
-        }    
 
+            _pauseScreen.SetActive(false);
+            _scoreScreen.SetActive(true);
+
+        }
+
+        
         private void OnUpdate()
         {
             if (GameStateManager.Instance.HasGameEnded)
@@ -40,6 +48,9 @@ namespace ShootingGallery
             {
                 _playerController.UpdateScore -= OnScoreUpdated;
                 _playerController.UpdateMaxScore -= OnMaxScoreUpdate;
+                _playerController.UpdateFinalScore -= OnFinalScoreUpdate;
+
+                GameStateManager.Instance.OnGameStart -= OnGameStart;
                 GameStateManager.Instance.OnGamePause -= OnGamePause;
                 GameStateManager.Instance.OnGameEnd -= OnGameEnd;
                 GameStateManager.Instance.OnGameRestart -= OnGameRestart;
@@ -56,19 +67,32 @@ namespace ShootingGallery
             _maxScoreText.text = $"{maxScore}";
         }
 
-        private void OnGamePause(bool _isPaused)
+        private void OnFinalScoreUpdate(uint finalScore)
         {
-            _pauseScreen.SetActive(_isPaused);
+            _scoreFinalText.text = $"{finalScore}";
+        }
+
+        private void OnGameStart()
+        {
+            _scoreScreen.SetActive(true);
+        }
+
+
+        private void OnGamePause(bool isPaused)
+        {
+            _pauseScreen.SetActive(isPaused);
         }
 
         private void OnGameEnd()
         {
             _pauseScreen.SetActive(false);
+            _scoreScreen.SetActive(false);
         }
 
         private void OnGameRestart()
         {
             _pauseScreen.SetActive(false);
         }
+
     }
 }
