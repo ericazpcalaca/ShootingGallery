@@ -14,14 +14,16 @@ namespace ShootingGallery
     {
         public GameManagerClip ControlClip { get; set; }
 
-        /// <summary>
-        /// This function is called when the Playable starts to play
-        /// </summary>
-        /// <param name="playable">The playable object</param>
-        /// <param name="info">The frame data</param>
+        private bool _canRun;
+
         public override void OnBehaviourPlay(Playable playable, FrameData info)
         {
-            if (!Application.isPlaying)
+            _canRun = true;
+        }
+
+        public override void ProcessFrame(Playable playable, FrameData info, object playerData)
+        {
+            if (!Application.isPlaying || !_canRun)
             {
                 return;
             }
@@ -40,6 +42,8 @@ namespace ShootingGallery
             {
                 GameStateManager.Instance.EndGame();
             }
+
+            _canRun = false;
         }
     }
 }

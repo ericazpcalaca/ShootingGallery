@@ -53,6 +53,9 @@ namespace ShootingGallery
 
         public void OnPauseShooting(InputAction.CallbackContext context)
         {
+            if (GameStateManager.Instance.HasGameEnded)
+                return;
+
             _isPaused = true;
             GameStateManager.Instance.GamePause(_isPaused);
             ShowMouse(true);
@@ -67,9 +70,8 @@ namespace ShootingGallery
         public void ResumeGame()
         {
             _isPaused = false;
-            GameStateManager.Instance.GamePause(_isPaused);
             ShowMouse(false);
-        }
+        } 
 
     }
 }

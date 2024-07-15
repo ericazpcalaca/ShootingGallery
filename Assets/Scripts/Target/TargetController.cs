@@ -46,6 +46,7 @@ namespace ShootingGallery
             GameStateManager.Instance.OnGameEnd += HandleGameEnd;
             GameStateManager.Instance.OnGameStart += HandleGameStart;
             GameStateManager.Instance.OnGamePause += HandleGamePause;
+            GameStateManager.Instance.OnGameRestart += HandleRestart;
         }
 
         private void OnDestroy()
@@ -53,6 +54,7 @@ namespace ShootingGallery
             GameStateManager.Instance.OnGameEnd -= HandleGameEnd;
             GameStateManager.Instance.OnGameStart -= HandleGameStart;
             GameStateManager.Instance.OnGamePause -= HandleGamePause;
+            GameStateManager.Instance.OnGameRestart -= HandleRestart;
         }
 
         private void Update()
@@ -118,6 +120,11 @@ namespace ShootingGallery
         private void HandleGamePause(bool isPaused)
         {
             CanMove = !isPaused;
+        }
+
+        private void HandleRestart()
+        {
+            TargetManager.Instance.ReturnToPool(gameObject); 
         }
     }
 }

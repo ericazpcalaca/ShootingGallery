@@ -35,6 +35,8 @@ namespace ShootingGallery
 
             CalculateInitialCameraRotation();
             GameStateManager.Instance.OnGameEnd += HandleGameEnd;
+            GameStateManager.Instance.OnGamePause += HandleGamePause;
+            GameStateManager.Instance.OnGameRestart += HandleRestart;
         }
 
         private void OnDestroy()
@@ -42,6 +44,8 @@ namespace ShootingGallery
             _playerInput.OnPlayerShoot -= OnPlayerShoot;
             _playerInput.OnPlayerMoveCamera -= OnPlayerMoveCamera;
             GameStateManager.Instance.OnGameEnd -= HandleGameEnd;
+            GameStateManager.Instance.OnGamePause -= HandleGamePause;
+            GameStateManager.Instance.OnGameRestart -= HandleRestart;
         }
 
         private void Update()
@@ -115,6 +119,20 @@ namespace ShootingGallery
             _playerScore = 0;
             UpdateScore?.Invoke(_playerScore);
             
+        }
+
+        private void HandleRestart()
+        {
+            _playerInput.ResumeGame();
+        }
+
+        private void HandleGamePause(bool isPaused)
+        {
+            if(!isPaused)
+            {
+                _playerInput.ResumeGame();
+            }
+
         }
     }
 }

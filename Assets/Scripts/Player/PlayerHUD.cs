@@ -18,9 +18,12 @@ namespace ShootingGallery
             _playerController = GetComponent<PlayerController>();
             _playerController.UpdateScore += OnScoreUpdated;
             _playerController.UpdateMaxScore += OnMaxScoreUpdate;
+
             GameStateManager.Instance.OnGamePause += OnGamePause;
+            GameStateManager.Instance.OnGameEnd += OnGameEnd;
+            GameStateManager.Instance.OnGameRestart += OnGameRestart;
             _pauseScreen.SetActive(false);
-        }
+        }    
 
         private void OnUpdate()
         {
@@ -38,6 +41,8 @@ namespace ShootingGallery
                 _playerController.UpdateScore -= OnScoreUpdated;
                 _playerController.UpdateMaxScore -= OnMaxScoreUpdate;
                 GameStateManager.Instance.OnGamePause -= OnGamePause;
+                GameStateManager.Instance.OnGameEnd -= OnGameEnd;
+                GameStateManager.Instance.OnGameRestart -= OnGameRestart;
             }
         }
 
@@ -56,6 +61,14 @@ namespace ShootingGallery
             _pauseScreen.SetActive(_isPaused);
         }
 
+        private void OnGameEnd()
+        {
+            _pauseScreen.SetActive(false);
+        }
 
+        private void OnGameRestart()
+        {
+            _pauseScreen.SetActive(false);
+        }
     }
 }

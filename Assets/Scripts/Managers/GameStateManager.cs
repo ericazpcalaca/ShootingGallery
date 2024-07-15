@@ -11,6 +11,7 @@ namespace ShootingGallery
 
         public Action OnGameStart;
         public Action OnGameEnd;
+        public Action OnGameRestart;
         public Action<bool> OnGamePause;
         public bool HasGameEnded { get; private set; }
         public bool HasGamePaused { get; private set; }
@@ -45,6 +46,16 @@ namespace ShootingGallery
                 _gamePlayableDirector.Play();
             }
             HasGamePaused = isPaused;
+        }
+
+        public void GameRestart()
+        {
+            OnGameRestart?.Invoke();
+            _targetPlayableDirector.Stop();
+            _targetPlayableDirector.time = 0;
+
+            _gamePlayableDirector.time = 0;
+            _gamePlayableDirector.Play();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -17,14 +18,17 @@ namespace ShootingGallery
             UpdateCountdownText();
             GameStateManager.Instance.OnGameStart += StartCountdown;
             GameStateManager.Instance.OnGamePause += HandleGamePause;
+            GameStateManager.Instance.OnGameRestart += HandleGameRestart;
         }
 
         private void OnDestroy()
         {
             GameStateManager.Instance.OnGameStart -= StartCountdown;
             GameStateManager.Instance.OnGamePause -= HandleGamePause;
+            GameStateManager.Instance.OnGameRestart -= HandleGameRestart;
         }
 
+  
         private void Update()
         {
             if (_isCountingDown)
@@ -80,5 +84,11 @@ namespace ShootingGallery
             _isCountingDown = false;
             UpdateCountdownText();
         }
+
+        private void HandleGameRestart()
+        {
+            RestartCountdown();
+        }
+
     }
 }
