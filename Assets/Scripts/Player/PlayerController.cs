@@ -65,11 +65,19 @@ namespace ShootingGallery
             {
                 GameObject target = hitInfo.collider.gameObject;
                 var targetMovement = target.GetComponent<Target>();
-                _playerScore += targetMovement.TargetScore;
+                int remainingHits = targetMovement.NumberOfHits - targetMovement.CurrentHit;
 
-                UpdateScore?.Invoke(_playerScore);
-
-                TargetManager.Instance.ReturnToPool(target);
+                if (remainingHits > 0)
+                {
+                    targetMovement.CurrentHit += 1;
+                }
+                else
+                {
+                    targetMovement.CurrentHit = 0;
+                    _playerScore += targetMovement.TargetScore;
+                    UpdateScore?.Invoke(_playerScore);
+                    TargetManager.Instance.ReturnToPool(target);
+                }
             }
         }
 

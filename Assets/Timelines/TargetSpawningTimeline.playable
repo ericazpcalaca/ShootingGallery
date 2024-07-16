@@ -15,6 +15,8 @@ MonoBehaviour:
   TargetMovementType: 3
   MovementSpeed: 3
   Points: 15
+  NumberOfHits: 3
+  CurrentHit: 0
   TargetPosition: {x: -2, y: -5, z: 0}
 --- !u!114 &-8613005460988058790
 MonoBehaviour:
@@ -31,6 +33,8 @@ MonoBehaviour:
   TargetMovementType: 1
   MovementSpeed: 2
   Points: 2
+  NumberOfHits: 0
+  CurrentHit: 0
   TargetPosition: {x: -7, y: 3, z: 0}
 --- !u!114 &-8296984279569541090
 MonoBehaviour:
@@ -47,6 +51,8 @@ MonoBehaviour:
   TargetMovementType: 0
   MovementSpeed: 5
   Points: 5
+  NumberOfHits: 3
+  CurrentHit: 0
   TargetPosition: {x: -4, y: -1, z: 0}
 --- !u!114 &-7971755668557791450
 MonoBehaviour:
@@ -62,8 +68,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetMovementType: 3
   MovementSpeed: 10
-  Points: 5
-  TargetPosition: {x: 2, y: -6, z: 0}
+  Points: 50
+  NumberOfHits: 2
+  CurrentHit: 0
+  TargetPosition: {x: -2, y: -6, z: 0}
 --- !u!114 &-7618567946020563316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -381,6 +389,8 @@ MonoBehaviour:
   TargetMovementType: 0
   MovementSpeed: 2
   Points: 10
+  NumberOfHits: 3
+  CurrentHit: 0
   TargetPosition: {x: 2, y: 3, z: 0}
 --- !u!114 &-4820221249097025284
 MonoBehaviour:
@@ -397,6 +407,8 @@ MonoBehaviour:
   TargetMovementType: 1
   MovementSpeed: 5
   Points: 10
+  NumberOfHits: 3
+  CurrentHit: 0
   TargetPosition: {x: 4, y: 3, z: 0}
 --- !u!114 &-4180138893121451793
 MonoBehaviour:
@@ -413,6 +425,8 @@ MonoBehaviour:
   TargetMovementType: 2
   MovementSpeed: 7
   Points: 2
+  NumberOfHits: 3
+  CurrentHit: 0
   TargetPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &-1920979174878903648
 MonoBehaviour:
@@ -706,6 +720,8 @@ MonoBehaviour:
   TargetMovementType: 0
   MovementSpeed: 3
   Points: 10
+  NumberOfHits: 3
+  CurrentHit: 0
   TargetPosition: {x: -5, y: -2, z: 0}
 --- !u!114 &2428230517070064856
 MonoBehaviour:
@@ -722,6 +738,8 @@ MonoBehaviour:
   TargetMovementType: 3
   MovementSpeed: 5
   Points: 5
+  NumberOfHits: 3
+  CurrentHit: 0
   TargetPosition: {x: 3, y: -5, z: 0}
 --- !u!114 &2829755084556116935
 MonoBehaviour:
@@ -738,6 +756,8 @@ MonoBehaviour:
   TargetMovementType: 2
   MovementSpeed: 2
   Points: 10
+  NumberOfHits: 1
+  CurrentHit: 0
   TargetPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &2965787573987794221
 MonoBehaviour:
@@ -804,6 +824,8 @@ MonoBehaviour:
   TargetMovementType: 1
   MovementSpeed: 3
   Points: 10
+  NumberOfHits: 1
+  CurrentHit: 0
   TargetPosition: {x: 4, y: 3, z: 0}
 --- !u!114 &6219998264485365758
 MonoBehaviour:

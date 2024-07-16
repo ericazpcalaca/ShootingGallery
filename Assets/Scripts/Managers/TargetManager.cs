@@ -26,7 +26,7 @@ namespace ShootingGallery
             }
         }
 
-        public void Spawn(Vector3 worldPos, Target.MovementType movementType, float speed, uint points)
+        public void Spawn(Vector3 worldPos, Target.MovementType movementType, float speed, uint points, int currentHit, int numOfHits)
         {
             var target = GetFromPool();
             target.transform.position = worldPos;
@@ -38,6 +38,8 @@ namespace ShootingGallery
                 targetMovement.CurrentMovementType = movementType;
                 targetMovement.Speed = speed;
                 targetMovement.TargetScore = points;
+                targetMovement.CurrentHit = currentHit;
+                targetMovement.NumberOfHits = numOfHits;
             }
         }
 

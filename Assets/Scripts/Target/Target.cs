@@ -17,6 +17,7 @@ namespace ShootingGallery
         [SerializeField] private float _speed = 2f;
         [SerializeField] private uint _targetScore;
         [SerializeField] private string _boundaryLayerName;
+        [SerializeField] private int _numberOfHits;
 
         public float Speed
         {
@@ -35,18 +36,37 @@ namespace ShootingGallery
             get { return _targetScore; }
             set { _targetScore = value; }
         }
+
+        public int CurrentHit
+        {
+            get { return _numberOfHits; }
+            set { _numberOfHits = value;  }
+        }
+
+        public int NumberOfHits
+        {
+            get { return _currentHit; }
+            set { _currentHit = value; }
+        }
         public bool CanMove { get; set; }
 
         private int _boundaryLayer;
+        private int _currentHit;
+
+        private Material _material;
 
         private void Awake()
         {
             CanMove = true;
+            _currentHit = 0;
             _boundaryLayer = LayerMask.NameToLayer(_boundaryLayerName);
             GameStateManager.Instance.OnGameEnd += HandleGameEnd;
             GameStateManager.Instance.OnGameStart += HandleGameStart;
             GameStateManager.Instance.OnGamePause += HandleGamePause;
             GameStateManager.Instance.OnGameRestart += HandleRestart;
+
+            var renderer = gameObject.GetComponent<MeshRenderer>();
+            _material = renderer.material;
         }
 
         private void OnDestroy()
