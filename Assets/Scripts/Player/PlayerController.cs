@@ -65,9 +65,8 @@ namespace ShootingGallery
             {
                 GameObject target = hitInfo.collider.gameObject;
                 var targetMovement = target.GetComponent<Target>();
-                int remainingHits = targetMovement.NumberOfHits - targetMovement.CurrentHit;
 
-                if (remainingHits > 0)
+                if (targetMovement.CurrentHit < targetMovement.NumberOfHits - 1)
                 {
                     targetMovement.CurrentHit += 1;
                 }
@@ -79,6 +78,7 @@ namespace ShootingGallery
                     TargetManager.Instance.ReturnToPool(target);
                 }
             }
+
         }
 
         private void OnPlayerMoveCamera(Vector2 posDelta)

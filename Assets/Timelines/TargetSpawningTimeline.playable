@@ -388,7 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetMovementType: 0
   MovementSpeed: 2
-  Points: 10
+  Points: 50
   NumberOfHits: 3
   CurrentHit: 0
   TargetPosition: {x: 2, y: 3, z: 0}
@@ -423,9 +423,9 @@ MonoBehaviour:
   m_Name: TargetControlClip(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
   TargetMovementType: 2
-  MovementSpeed: 7
-  Points: 2
-  NumberOfHits: 3
+  MovementSpeed: 2
+  Points: 20
+  NumberOfHits: 1
   CurrentHit: 0
   TargetPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &-1920979174878903648

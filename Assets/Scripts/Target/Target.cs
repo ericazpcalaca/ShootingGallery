@@ -1,10 +1,17 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ShootingGallery
 {
     public class Target : MonoBehaviour
     {
+        [Serializable]
+        public struct HitColorMap
+        {
+            public int Hit;
+            public Color HitColor;
+        }
         public enum MovementType
         {
             Up,
@@ -18,6 +25,7 @@ namespace ShootingGallery
         [SerializeField] private uint _targetScore;
         [SerializeField] private string _boundaryLayerName;
         [SerializeField] private int _numberOfHits;
+        [SerializeField] private List<HitColorMap> _targetColors;
 
         public float Speed
         {
@@ -39,14 +47,23 @@ namespace ShootingGallery
 
         public int CurrentHit
         {
-            get { return _numberOfHits; }
-            set { _numberOfHits = value;  }
+            get { return _currentHit; }
+            set {
+                _currentHit = value;
+                foreach(HitColorMap item in _targetColors)
+                {
+                    if (item.Hit == _currentHit)
+                    {
+                        _material.color = item.HitColor;
+                    }
+                }
+            }
         }
 
         public int NumberOfHits
         {
-            get { return _currentHit; }
-            set { _currentHit = value; }
+            get { return _numberOfHits; }
+            set { _numberOfHits = value; }
         }
         public bool CanMove { get; set; }
 
