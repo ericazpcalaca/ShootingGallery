@@ -64,7 +64,7 @@ namespace ShootingGallery
             if (Physics.Raycast(startPos, _targetIndicator.forward, out RaycastHit hitInfo, _raycastDistance, _targetLayer.value))
             {
                 GameObject target = hitInfo.collider.gameObject;
-                var targetMovement = target.GetComponent<TargetController>();
+                var targetMovement = target.GetComponent<Target>();
                 _playerScore += targetMovement.TargetScore;
 
                 UpdateScore?.Invoke(_playerScore);

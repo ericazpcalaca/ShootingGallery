@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootingGallery
 {
-    public class TargetController : MonoBehaviour
+    public class Target : MonoBehaviour
     {
         public enum MovementType
         {

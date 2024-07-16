@@ -36,7 +36,7 @@ public class TargetScoreDisplay : MonoBehaviour
             _targeScoreDisplay.position = screenPosition;
 
             GameObject currentGameObject = gameObject;
-            var target = currentGameObject.GetComponent<TargetController>();
+            var target = currentGameObject.GetComponent<Target>();
             uint targetScore = target.TargetScore;
             _scoreDisplay.text = $"{targetScore}";
         }

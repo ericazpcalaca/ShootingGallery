@@ -250,9 +250,9 @@ GameObject:
   - component: {fileID: 4166559251668248411}
   - component: {fileID: 6511602383668002891}
   - component: {fileID: 301390896956762168}
-  - component: {fileID: 6865190122728641148}
   - component: {fileID: 5914516160758923179}
   - component: {fileID: 975416317973135368}
+  - component: {fileID: 5828942320275684659}
   m_Layer: 3
   m_Name: Target
   m_TagString: Untagged
@@ -347,22 +347,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6865190122728641148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7523105685032556308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 002c88f763bd0bd47a64c49d37d9dc5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movementType: 0
-  _speed: 2
-  _targetScore: 0
-  _boundaryLayerName: Boundary
 --- !u!54 &5914516160758923179
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -406,3 +390,19 @@ MonoBehaviour:
   _targeScoreDisplay: {fileID: 1772800141842402166}
   _scoreDisplay: {fileID: 3691793228232987531}
   _offset: 80
+--- !u!114 &5828942320275684659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7523105685032556308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf55b36359af3647bd2489cc4eca96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementType: 0
+  _speed: 2
+  _targetScore: 0
+  _boundaryLayerName: Boundary

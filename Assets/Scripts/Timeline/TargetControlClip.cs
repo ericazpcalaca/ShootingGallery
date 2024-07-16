@@ -12,7 +12,7 @@ namespace ShootingGallery
     {
         public ClipCaps clipCaps { get { return ClipCaps.None; } }
 
-        public TargetController.MovementType TargetMovementType;
+        public Target.MovementType TargetMovementType;
         public float MovementSpeed = 2f;
         public uint Points;
         public Vector3 TargetPosition = Vector3.zero;
