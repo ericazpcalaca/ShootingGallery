@@ -125,6 +125,8 @@ namespace ShootingGallery
 
         private void HandleRestart()
         {
+            _playerScore = 0;
+            UpdateScore?.Invoke(_playerScore);
             _playerInput.ResumeGame();
         }
 
