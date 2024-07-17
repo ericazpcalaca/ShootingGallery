@@ -2034,6 +2034,7 @@ MonoBehaviour:
   _scoreText: {fileID: 1192289481034334932}
   _scoreFinalText: {fileID: 7095703695562243431}
   _maxScoreText: {fileID: 8758028097753892917}
+  _startScreen: {fileID: 0}
   _pauseScreen: {fileID: 7104168657279411606}
   _scoreScreen: {fileID: 784240940488685918}
 --- !u!114 &6613972352558398030

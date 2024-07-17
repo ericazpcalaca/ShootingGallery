@@ -29,7 +29,6 @@ namespace ShootingGallery
 
             _pauseScreen.SetActive(false);
             _scoreScreen.SetActive(true);
-
         }
 
         
@@ -77,7 +76,6 @@ namespace ShootingGallery
             _scoreScreen.SetActive(true);
         }
 
-
         private void OnGamePause(bool isPaused)
         {
             _pauseScreen.SetActive(isPaused);
@@ -93,6 +91,5 @@ namespace ShootingGallery
         {
             _pauseScreen.SetActive(false);
         }
-
     }
 }
