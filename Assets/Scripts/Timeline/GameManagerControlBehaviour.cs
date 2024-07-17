@@ -42,6 +42,10 @@ namespace ShootingGallery
             {
                 GameStateManager.Instance.EndGame();
             }
+            else if (ControlClip.Command == GameManagerClip.GameManagerCommand.GameCountDown)
+            {
+                GameStateManager.Instance.GameCountDown();
+            }
 
             _canRun = false;
         }
