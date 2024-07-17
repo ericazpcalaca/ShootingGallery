@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -6,16 +7,16 @@ namespace ShootingGallery
 {
     public class CountdownTimer : MonoBehaviour
     {
-        [SerializeField] private float _countdownTime;
+        [SerializeField] private int _countdownTime;
         [SerializeField] private TextMeshProUGUI _countdownText;
-
-        private float _currentTime;
+        
+        private Coroutine _countdownTimer;
+        private WaitForSeconds _waitOneSecond = new WaitForSeconds(1);
         private bool _isCountingDown = false;
 
         private void Start()
         {
-            _currentTime = _countdownTime;
-            UpdateCountdownText();
+            UpdateCountdownText(_countdownTime);
             GameStateManager.Instance.OnGameStart += StartCountdown;
             GameStateManager.Instance.OnGamePause += HandleGamePause;
             GameStateManager.Instance.OnGameRestart += HandleGameRestart;
@@ -28,67 +29,54 @@ namespace ShootingGallery
             GameStateManager.Instance.OnGameRestart -= HandleGameRestart;
         }
 
-  
-        private void Update()
+        private void UpdateCountdownText(int currentTime)
         {
-            if (_isCountingDown)
-            {
-                _currentTime -= Time.deltaTime;
-                if (_currentTime <= 0)
-                {
-                    _currentTime = 0;
-                    _isCountingDown = false;
-                }
-                UpdateCountdownText();
-            }
-        }
-
-        private void UpdateCountdownText()
-        {
-            int minutes = Mathf.FloorToInt(_currentTime / 60);
-            int seconds = Mathf.FloorToInt(_currentTime % 60);
+            int minutes = Mathf.FloorToInt(currentTime / 60);
+            int seconds = Mathf.FloorToInt(currentTime % 60);
             _countdownText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
 
         private void StartCountdown()
         {
-            _currentTime = _countdownTime;
             _isCountingDown = true;
-            UpdateCountdownText();
+            _countdownTimer = StartCoroutine(Countdown(seconds: _countdownTime));
         }
+
+        private IEnumerator Countdown(int seconds)
+        {
+            int count = seconds;
+
+            while (count >= 0)
+            {
+                while (!_isCountingDown)
+                {
+                    yield return null;
+                }
+                UpdateCountdownText(count);
+                yield return _waitOneSecond;
+                count--;
+            }
+        }
+
         private void HandleGamePause(bool isPaused)
         {
-            if (isPaused)
-            {
-                PauseCountdown();
-            }
-            else
-            {
-                ResumeCountdown();
-            }
-        }
-
-        public void PauseCountdown()
-        {
-            _isCountingDown = false;
-        }
-
-        public void ResumeCountdown()
-        {
-            _isCountingDown = true;
-        }
-
-        public void RestartCountdown()
-        {
-            _currentTime = _countdownTime;
-            _isCountingDown = false;
-            UpdateCountdownText();
+            _isCountingDown = !isPaused;
         }
 
         private void HandleGameRestart()
         {
             RestartCountdown();
         }
+
+        public void RestartCountdown()
+        {
+            _isCountingDown = false;
+            if (_countdownTimer != null)
+            {
+                StopCoroutine(_countdownTimer);
+            }
+            UpdateCountdownText(_countdownTime);
+        }      
 
     }
 }
