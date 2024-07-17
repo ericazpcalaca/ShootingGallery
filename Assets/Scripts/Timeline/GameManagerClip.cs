@@ -17,7 +17,7 @@ namespace ShootingGallery
         {
             StartGame,
             EndGame,
-            GameCountDown,
+            GameCountdown,
         }
 
         public ClipCaps clipCaps { get { return ClipCaps.None; } }

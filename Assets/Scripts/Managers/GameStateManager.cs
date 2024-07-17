@@ -12,13 +12,13 @@ namespace ShootingGallery
         public Action OnGameStart;
         public Action OnGameEnd;
         public Action OnGameRestart;
-        public Action OnGameCountDown;
+        public Action OnGameCountdown;
         public Action<bool> OnGamePause;
         public bool HasGameEnded { get; private set; }
         public bool HasGamePaused { get; private set; }
 
-        public void GameCountDown() {
-            OnGameCountDown?.Invoke();
+        public void GameCountdown() {
+            OnGameCountdown?.Invoke();
         }
 
         public void StartGame()

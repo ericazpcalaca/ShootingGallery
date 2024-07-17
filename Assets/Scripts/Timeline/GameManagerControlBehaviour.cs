@@ -42,9 +42,9 @@ namespace ShootingGallery
             {
                 GameStateManager.Instance.EndGame();
             }
-            else if (ControlClip.Command == GameManagerClip.GameManagerCommand.GameCountDown)
+            else if (ControlClip.Command == GameManagerClip.GameManagerCommand.GameCountdown)
             {
-                GameStateManager.Instance.GameCountDown();
+                GameStateManager.Instance.GameCountdown();
             }
 
             _canRun = false;

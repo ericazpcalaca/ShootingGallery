@@ -2987,7 +2987,7 @@ GameObject:
   - component: {fileID: 3980356240786092611}
   - component: {fileID: 5216120242189801515}
   - component: {fileID: 186742377754728783}
-  - component: {fileID: 5781953023631110005}
+  - component: {fileID: 8256225527178891778}
   m_Layer: 5
   m_Name: CountDown
   m_TagString: Untagged
@@ -3054,7 +3054,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5781953023631110005
+--- !u!114 &8256225527178891778
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3063,10 +3063,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7360469155875103850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb1882e6efc127b4c980de4d71e71631, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d9cb39f9554ec240906ba3e6898a4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countDownText: {fileID: 7208725267195407516}
+  _countdownText: {fileID: 7208725267195407516}
 --- !u!1 &7587366487745844724
 GameObject:
   m_ObjectHideFlags: 0
