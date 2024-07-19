@@ -1,19 +1,26 @@
 using ShootingGallery;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ShootingGallery
 {
     public class StartGameCountdown : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _countdownText;
+        [SerializeField] private Image _txtReady;
+        [SerializeField] private Image _txtGo;
 
         private WaitForSeconds _waitOneSecond = new WaitForSeconds(1);
+        private WaitForSeconds _waitTwoSeconds = new WaitForSeconds(2);
 
         private void Start()
         {
+            _txtReady.gameObject.SetActive(false);
+            _txtGo.gameObject.SetActive(false);
+
             GameStateManager.Instance.OnGameCountdown += HandleCountDown;
         }
 
@@ -24,19 +31,21 @@ namespace ShootingGallery
 
         private void HandleCountDown()
         {
-            StartCoroutine(Countdown(seconds: 3));
+            _txtReady.gameObject.SetActive(false);
+            _txtGo.gameObject.SetActive(false);
+            StartCoroutine(ShowImagesSequence());
         }
 
-        private IEnumerator Countdown(int seconds)
+        private IEnumerator ShowImagesSequence()
         {
-            int count = seconds;
+            _txtReady.gameObject.SetActive(true);
+            yield return _waitTwoSeconds;
+            _txtReady.gameObject.SetActive(false);
+            _txtGo.gameObject.SetActive(true) ;
+            yield return _waitOneSecond;
+            _txtGo.gameObject.SetActive(false);
 
-            while (count > 0)
-            {
-                _countdownText.text = count.ToString();
-                yield return _waitOneSecond;
-                count--;
-            }
         }
+
     }
 }
