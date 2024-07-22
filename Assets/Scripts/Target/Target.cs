@@ -7,11 +7,12 @@ namespace ShootingGallery
     public class Target : MonoBehaviour
     {
         [Serializable]
-        public struct HitColorMap
+        public struct HitPrefabMap
         {
             public int Hit;
-            public Color HitColor;
+            public GameObject Prefab;
         }
+
         public enum MovementType
         {
             Up,
@@ -25,7 +26,7 @@ namespace ShootingGallery
         [SerializeField] private uint _targetScore;
         [SerializeField] private string _boundaryLayerName;
         [SerializeField] private int _numberOfHits;
-        [SerializeField] private List<HitColorMap> _targetColors;
+        [SerializeField] private List<HitPrefabMap> _targetPrefabs;
 
         public float Speed
         {
@@ -48,13 +49,14 @@ namespace ShootingGallery
         public int CurrentHit
         {
             get { return _currentHit; }
-            set {
+            set
+            {
                 _currentHit = value;
-                foreach(HitColorMap item in _targetColors)
+                foreach (HitPrefabMap item in _targetPrefabs)
                 {
                     if (item.Hit == _currentHit)
                     {
-                        _material.color = item.HitColor;
+
                     }
                 }
             }
@@ -70,8 +72,6 @@ namespace ShootingGallery
         private int _boundaryLayer;
         private int _currentHit;
 
-        private Material _material;
-
         private void Awake()
         {
             CanMove = true;
@@ -81,9 +81,6 @@ namespace ShootingGallery
             GameStateManager.Instance.OnGameStart += HandleGameStart;
             GameStateManager.Instance.OnGamePause += HandleGamePause;
             GameStateManager.Instance.OnGameRestart += HandleRestart;
-
-            var renderer = gameObject.GetComponent<MeshRenderer>();
-            _material = renderer.material;
         }
 
         private void OnDestroy()
@@ -148,7 +145,7 @@ namespace ShootingGallery
         {
             TargetManager.Instance.ReturnToPool(gameObject);
         }
-        
+
         private void HandleGameStart()
         {
             TargetManager.Instance.ReturnToPool(gameObject);
@@ -161,7 +158,7 @@ namespace ShootingGallery
 
         private void HandleRestart()
         {
-            TargetManager.Instance.ReturnToPool(gameObject); 
+            TargetManager.Instance.ReturnToPool(gameObject);
         }
     }
 }
