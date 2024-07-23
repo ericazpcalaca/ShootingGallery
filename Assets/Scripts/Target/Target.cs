@@ -135,7 +135,9 @@ namespace ShootingGallery
 
         private void MoveRight()
         {
-            transform.position += _speed * Time.deltaTime * transform.right;
+            Quaternion turn = Quaternion.Euler(0, 180, 0);
+            transform.rotation = turn;
+            transform.position += transform.right * _speed * -1 * Time.deltaTime;
         }
 
         private void HandleGameEnd()
