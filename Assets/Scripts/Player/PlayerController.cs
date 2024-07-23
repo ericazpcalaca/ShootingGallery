@@ -80,12 +80,14 @@ namespace ShootingGallery
                 if (target.CurrentHit < target.NumberOfHits - 1)
                 {
                     target.CurrentHit += 1;
+                    AudioManager.Instance.PlayHitTarget();
                 }
                 else
                 {
                     target.CurrentHit = 0;
                     _playerScore += target.TargetScore;
                     UpdateScore?.Invoke(_playerScore);
+                    AudioManager.Instance.PlayHitTarget();
                     TargetManager.Instance.ReturnToPool(target);
                 }
             }

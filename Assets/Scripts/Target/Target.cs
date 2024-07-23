@@ -61,6 +61,7 @@ namespace ShootingGallery
             CanMove = true;
             _currentHit = 0;
             _boundaryLayer = LayerMask.NameToLayer(_boundaryLayerName);
+
             GameStateManager.Instance.OnGameEnd += HandleGameEnd;
             GameStateManager.Instance.OnGameStart += HandleGameStart;
             GameStateManager.Instance.OnGamePause += HandleGamePause;
