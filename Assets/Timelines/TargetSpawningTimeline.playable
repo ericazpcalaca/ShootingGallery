@@ -316,285 +316,9 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: TargetOne
   - m_Version: 1
-    m_Start: 3.999999999999999
+    m_Start: 4
     m_ClipIn: 0
-    m_Asset: {fileID: -62142075685736909}
-    m_Duration: 1
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8876843840112715091}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: TargetOne
-  - m_Version: 1
-    m_Start: 5.000000000000001
-    m_ClipIn: 0
-    m_Asset: {fileID: -2308959833556905724}
-    m_Duration: 1
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8876843840112715091}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: TargetOne
-  - m_Version: 1
-    m_Start: 6.000000000000001
-    m_ClipIn: 0
-    m_Asset: {fileID: -6290318715367566936}
-    m_Duration: 1
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8876843840112715091}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: TargetOne
-  - m_Version: 1
-    m_Start: 7.000000000000001
-    m_ClipIn: 0
-    m_Asset: {fileID: 5489453742636656079}
-    m_Duration: 1
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8876843840112715091}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: TargetOne
-  - m_Version: 1
-    m_Start: 8
-    m_ClipIn: 0
-    m_Asset: {fileID: 7153683305463571613}
+    m_Asset: {fileID: 7387388352180308635}
     m_Duration: 1
     m_TimeScale: 1
     m_ParentTrack: {fileID: -8876843840112715091}
@@ -912,24 +636,6 @@ MonoBehaviour:
   NumberOfHits: 2
   CurrentHit: 0
   TargetPosition: {x: -10, y: 5.5, z: 27}
---- !u!114 &-6290318715367566936
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb7be68cc6086b4e9f8bd71fdeaff80, type: 3}
-  m_Name: TargetControlClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  TargetMovementType: 3
-  MovementSpeed: 7
-  Points: 10
-  NumberOfHits: 1
-  CurrentHit: 0
-  TargetPosition: {x: -25, y: -6, z: 27}
 --- !u!114 &-6233561209073907228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1214,24 +920,6 @@ MonoBehaviour:
   NumberOfHits: 2
   CurrentHit: 0
   TargetPosition: {x: 10, y: 5.5, z: 27}
---- !u!114 &-2308959833556905724
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb7be68cc6086b4e9f8bd71fdeaff80, type: 3}
-  m_Name: TargetControlClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  TargetMovementType: 3
-  MovementSpeed: 7
-  Points: 10
-  NumberOfHits: 1
-  CurrentHit: 0
-  TargetPosition: {x: -25, y: -6, z: 27}
 --- !u!114 &-1920979174878903648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2757,7 +2445,7 @@ MonoBehaviour:
   Points: 10
   NumberOfHits: 1
   CurrentHit: 0
-  TargetPosition: {x: -25, y: -6, z: 27}
+  TargetPosition: {x: 15, y: -6, z: 27}
 --- !u!114 &-569366059628737907
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2885,25 +2573,7 @@ MonoBehaviour:
   Points: 10
   NumberOfHits: 1
   CurrentHit: 0
-  TargetPosition: {x: -25, y: -6, z: 27}
---- !u!114 &-62142075685736909
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb7be68cc6086b4e9f8bd71fdeaff80, type: 3}
-  m_Name: TargetControlClip(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  TargetMovementType: 3
-  MovementSpeed: 7
-  Points: 10
-  NumberOfHits: 1
-  CurrentHit: 0
-  TargetPosition: {x: -25, y: -6, z: 27}
+  TargetPosition: {x: 15, y: -6, z: 27}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2999,7 +2669,7 @@ MonoBehaviour:
   Points: 10
   NumberOfHits: 1
   CurrentHit: 0
-  TargetPosition: {x: -25, y: -6, z: 27}
+  TargetPosition: {x: 15, y: -6, z: 27}
 --- !u!114 &1204136321616052672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3707,7 +3377,7 @@ MonoBehaviour:
   Points: 10
   NumberOfHits: 1
   CurrentHit: 0
-  TargetPosition: {x: -25, y: -6, z: 27}
+  TargetPosition: {x: 15, y: -6, z: 27}
 --- !u!114 &4022122065193416171
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3852,24 +3522,6 @@ MonoBehaviour:
   NumberOfHits: 2
   CurrentHit: 0
   TargetPosition: {x: 10, y: 5.5, z: 27}
---- !u!114 &5489453742636656079
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb7be68cc6086b4e9f8bd71fdeaff80, type: 3}
-  m_Name: TargetControlClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  TargetMovementType: 3
-  MovementSpeed: 7
-  Points: 10
-  NumberOfHits: 1
-  CurrentHit: 0
-  TargetPosition: {x: -25, y: -6, z: 27}
 --- !u!114 &5820380665260528145
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4121,24 +3773,6 @@ MonoBehaviour:
   NumberOfHits: 2
   CurrentHit: 0
   TargetPosition: {x: -10, y: 5.5, z: 27}
---- !u!114 &7153683305463571613
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb7be68cc6086b4e9f8bd71fdeaff80, type: 3}
-  m_Name: TargetControlClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  TargetMovementType: 3
-  MovementSpeed: 7
-  Points: 10
-  NumberOfHits: 1
-  CurrentHit: 0
-  TargetPosition: {x: -25, y: -6, z: 27}
 --- !u!114 &7267356920784728948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4155,6 +3789,24 @@ MonoBehaviour:
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: d85a9a6a27ab3fc429b4f3b354365134, type: 2}
+--- !u!114 &7387388352180308635
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb7be68cc6086b4e9f8bd71fdeaff80, type: 3}
+  m_Name: TargetControlClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TargetMovementType: 3
+  MovementSpeed: 7
+  Points: 10
+  NumberOfHits: 1
+  CurrentHit: 0
+  TargetPosition: {x: 15, y: -6, z: 27}
 --- !u!114 &7786267074171689089
 MonoBehaviour:
   m_ObjectHideFlags: 1

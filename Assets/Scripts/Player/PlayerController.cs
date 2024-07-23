@@ -27,6 +27,7 @@ namespace ShootingGallery
         private float _currentCameraPitch;
         private uint _playerScore;
         private uint _playerMaxScore;
+        private bool _isCountdownActive;
 
         private void Awake()
         {
@@ -34,20 +35,26 @@ namespace ShootingGallery
             _playerInput.OnPlayerShoot += OnPlayerShoot;
             _playerInput.OnPlayerMoveCamera += OnPlayerMoveCamera;
             _playerScore = 0;
-            
+            _isCountdownActive = true; 
+
             CalculateInitialCameraRotation();
-            GameStateManager.Instance.OnGameEnd += HandleGameEnd;
-            GameStateManager.Instance.OnGamePause += HandleGamePause;
+            GameStateManager.Instance.OnGameCountdown += HandleContdown;
+            GameStateManager.Instance.OnGameStart += HandleStart;
             GameStateManager.Instance.OnGameRestart += HandleRestart;
+            GameStateManager.Instance.OnGamePause += HandleGamePause;
+            GameStateManager.Instance.OnGameEnd += HandleGameEnd;
         }
+
 
         private void OnDestroy()
         {
             _playerInput.OnPlayerShoot -= OnPlayerShoot;
             _playerInput.OnPlayerMoveCamera -= OnPlayerMoveCamera;
-            GameStateManager.Instance.OnGameEnd -= HandleGameEnd;
-            GameStateManager.Instance.OnGamePause -= HandleGamePause;
+            GameStateManager.Instance.OnGameCountdown -= HandleContdown;
+            GameStateManager.Instance.OnGameStart -= HandleStart;
             GameStateManager.Instance.OnGameRestart -= HandleRestart;
+            GameStateManager.Instance.OnGamePause -= HandleGamePause;
+            GameStateManager.Instance.OnGameEnd -= HandleGameEnd;
         }
 
         private void Update()
@@ -88,6 +95,9 @@ namespace ShootingGallery
 
         private void OnPlayerMoveCamera(Vector2 posDelta)
         {
+            if(_isCountdownActive) 
+                return;
+
             if (Mathf.Abs(posDelta.x) > _minRotDelta)
             {
                 _currentCameraYaw += posDelta.x * _cameraRotationSpeed * Time.deltaTime;
@@ -120,6 +130,16 @@ namespace ShootingGallery
             transform.rotation = Quaternion.Euler(_currentCameraPitch, _currentCameraYaw, 0.0f);
         }
 
+        private void HandleContdown()
+        {
+            _isCountdownActive = true;
+        }
+
+        private void HandleStart()
+        {
+            _isCountdownActive = false;
+        }
+
         private void HandleGameEnd()
         {
             _playerMaxScore = (uint) PlayerPrefs.GetInt("HighScore", 0);
@@ -149,7 +169,6 @@ namespace ShootingGallery
             {
                 _playerInput.ResumeGame();
             }
-
         }
     }
 }
