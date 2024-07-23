@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7179394436463100400
 RectTransform:
   m_ObjectHideFlags: 0
@@ -390,17 +390,6 @@ MonoBehaviour:
   _targetScore: 0
   _boundaryLayerName: Boundary
   _numberOfHits: 0
-  _targetPrefabs:
-  - Hit: 0
-    Prefab: {fileID: 114662, guid: 325beb5088b92ec4786c0a2e5965c008, type: 3}
-  - Hit: 1
-    Prefab: {fileID: 102966, guid: fd01235e5651fc54ab21e63a20bc762e, type: 3}
-  - Hit: 2
-    Prefab: {fileID: 117412, guid: 10f15a2a50ae19a488f263aa94b69c17, type: 3}
-  - Hit: 3
-    Prefab: {fileID: 144636, guid: 80e076b1af0088b4e83341bae6df0cb5, type: 3}
-  - Hit: 4
-    Prefab: {fileID: 144636, guid: 80e076b1af0088b4e83341bae6df0cb5, type: 3}
 --- !u!1001 &3800877141802660343
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,13 +6,6 @@ namespace ShootingGallery
 {
     public class Target : MonoBehaviour
     {
-        [Serializable]
-        public struct HitPrefabMap
-        {
-            public int Hit;
-            public GameObject Prefab;
-        }
-
         public enum MovementType
         {
             Up,
@@ -26,7 +19,8 @@ namespace ShootingGallery
         [SerializeField] private uint _targetScore;
         [SerializeField] private string _boundaryLayerName;
         [SerializeField] private int _numberOfHits;
-        [SerializeField] private List<HitPrefabMap> _targetPrefabs;
+
+        private Material _material;
 
         public float Speed
         {
@@ -49,17 +43,7 @@ namespace ShootingGallery
         public int CurrentHit
         {
             get { return _currentHit; }
-            set
-            {
-                _currentHit = value;
-                foreach (HitPrefabMap item in _targetPrefabs)
-                {
-                    if (item.Hit == _currentHit)
-                    {
-
-                    }
-                }
-            }
+            set { _currentHit = value; }
         }
 
         public int NumberOfHits
@@ -81,6 +65,9 @@ namespace ShootingGallery
             GameStateManager.Instance.OnGameStart += HandleGameStart;
             GameStateManager.Instance.OnGamePause += HandleGamePause;
             GameStateManager.Instance.OnGameRestart += HandleRestart;
+
+            var meshRenderer = GetComponentInChildren<MeshRenderer>();
+            _material = meshRenderer.material;
         }
 
         private void OnDestroy()
@@ -113,12 +100,22 @@ namespace ShootingGallery
             }
         }
 
-        void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.layer == _boundaryLayer)
             {
-                TargetManager.Instance.ReturnToPool(gameObject);
+                TargetManager.Instance.ReturnToPool(this);
             }
+        }
+
+        public void ConfigureMaterial(Texture2D currentTexture)
+        {
+            if (currentTexture == null)
+            {
+                return;
+            }
+
+            _material.mainTexture = currentTexture;
         }
 
         private void MoveUp()
@@ -143,12 +140,12 @@ namespace ShootingGallery
 
         private void HandleGameEnd()
         {
-            TargetManager.Instance.ReturnToPool(gameObject);
+            TargetManager.Instance.ReturnToPool(this);
         }
 
         private void HandleGameStart()
         {
-            TargetManager.Instance.ReturnToPool(gameObject);
+            TargetManager.Instance.ReturnToPool(this);
         }
 
         private void HandleGamePause(bool isPaused)
@@ -158,7 +155,7 @@ namespace ShootingGallery
 
         private void HandleRestart()
         {
-            TargetManager.Instance.ReturnToPool(gameObject);
+            TargetManager.Instance.ReturnToPool(this);
         }
     }
 }

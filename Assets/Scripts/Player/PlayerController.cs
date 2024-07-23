@@ -68,17 +68,17 @@ namespace ShootingGallery
                 if ((_raycastObstructionLayer.value & (1 << hitInfo.collider.gameObject.layer)) != 0)
                     return;
 
-                GameObject target = hitInfo.collider.gameObject;
-                var targetMovement = target.GetComponent<Target>();
+                GameObject targetGameObject = hitInfo.collider.gameObject;
+                var target = targetGameObject.GetComponent<Target>();
 
-                if (targetMovement.CurrentHit < targetMovement.NumberOfHits - 1)
+                if (target.CurrentHit < target.NumberOfHits - 1)
                 {
-                    targetMovement.CurrentHit += 1;
+                    target.CurrentHit += 1;
                 }
                 else
                 {
-                    targetMovement.CurrentHit = 0;
-                    _playerScore += targetMovement.TargetScore;
+                    target.CurrentHit = 0;
+                    _playerScore += target.TargetScore;
                     UpdateScore?.Invoke(_playerScore);
                     TargetManager.Instance.ReturnToPool(target);
                 }

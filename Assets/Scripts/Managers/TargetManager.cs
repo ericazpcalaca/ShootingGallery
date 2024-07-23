@@ -7,8 +7,16 @@ namespace ShootingGallery
     {
         [SerializeField] private uint _initPoolSize;
         [SerializeField] private GameObject _objectToPool;
+        [SerializeField] private Texture2D _pointTierOneTexture;
+        [SerializeField] private Texture2D _pointTierTwoTexture;
+        [SerializeField] private Texture2D _pointTierThreTexture;
+        [SerializeField] private Texture2D _pointTierFourTexture;
+        [SerializeField] private int _pointTierOne = 10;
+        [SerializeField] private int _pointTierTwo = 50;
+        [SerializeField] private int _pointTierThree = 100;
+        [SerializeField] private int _pointTierFour = 150;
 
-        private Stack<GameObject> _targetPool;
+        private Stack<Target> _targetPool;
 
         private void Start()
         {
@@ -17,51 +25,83 @@ namespace ShootingGallery
 
         private void SetupPool()
         {
-            _targetPool = new Stack<GameObject>();
+            _targetPool = new Stack<Target>();
             for (int i = 0; i < _initPoolSize; i++)
             {
-                GameObject _target = Instantiate(_objectToPool);
-                _target.SetActive(false);
-                _targetPool.Push(_target);
+                GameObject targetGameObject = Instantiate(_objectToPool);
+                Target target = targetGameObject.GetComponent<Target>();
+                if (targetGameObject == null)
+                {
+                    Debug.LogError($"[{typeof(TargetManager).Name}] - Can't instantiate target from prefab!");
+                    continue;
+                }
+
+                targetGameObject.SetActive(false);
+                _targetPool.Push(target);
             }
         }
 
         public void Spawn(Vector3 worldPos, Target.MovementType movementType, float speed, uint points, int currentHit, int numOfHits)
         {
             var target = GetFromPool();
-            target.transform.position = worldPos;
-
-            var targetMovement = target.GetComponent<Target>();
-            if (targetMovement != null)
+            if (target == null)
             {
-                targetMovement.CanMove = true;
-                targetMovement.CurrentMovementType = movementType;
-                targetMovement.Speed = speed;
-                targetMovement.TargetScore = points;
-                targetMovement.CurrentHit = currentHit;
-                targetMovement.NumberOfHits = numOfHits;
+                return;
             }
+
+            target.transform.position = worldPos;
+            target.CanMove = true;
+            target.CurrentMovementType = movementType;
+            target.Speed = speed;
+            target.TargetScore = points;
+            target.CurrentHit = currentHit;
+            target.NumberOfHits = numOfHits;
+
+            Texture2D targetTexture = GetTargetTexture(points);
+            target.ConfigureMaterial(targetTexture);
         }
 
-        public void ReturnToPool(GameObject target)
+        public void ReturnToPool(Target target)
         {
             _targetPool.Push(target);
-            target.SetActive(false);
+            target.gameObject.SetActive(false);
         }
 
-        private GameObject GetFromPool()
+        private Target GetFromPool()
         {
             if (_targetPool.Count > 0)
             {
-                GameObject _target = _targetPool.Pop();
-                _target.SetActive(true);
-                return _target;
+                Target target = _targetPool.Pop();
+                target.gameObject.SetActive(true);
+                return target;
             }
             else
             {
-                GameObject _target = Instantiate(_objectToPool);
-                return _target;
+                GameObject targetGameObject = Instantiate(_objectToPool);
+                return targetGameObject.GetComponent<Target>();
             }
+        }
+
+        private Texture2D GetTargetTexture(uint targetPoint)
+        {
+            Texture2D targetTexture;
+            if (targetPoint <= _pointTierOne)
+            {
+                targetTexture = _pointTierOneTexture;
+            }
+            else if (targetPoint <= _pointTierTwo)
+            {
+                targetTexture = _pointTierTwoTexture;
+            }
+            else if (targetPoint <= _pointTierThree)
+            {
+                targetTexture = _pointTierThreTexture;
+            }
+            else
+            {
+                targetTexture = _pointTierFourTexture;
+            }
+            return targetTexture;
         }
     }
 }
