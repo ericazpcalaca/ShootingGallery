@@ -420,7 +420,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &593742438
 MonoBehaviour:
@@ -499,7 +499,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &663134398
 PlayableDirector:
@@ -877,7 +877,7 @@ PrefabInstance:
     - target: {fileID: 3481073572777596655, guid: 86546fa01e89400458427c0db625f723,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3481073572777596655, guid: 86546fa01e89400458427c0db625f723,
         type: 3}
@@ -1127,7 +1127,7 @@ Transform:
   - {fileID: 258438793}
   - {fileID: 1454804389}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1607974541 stripped
 Transform:
@@ -1152,12 +1152,12 @@ PrefabInstance:
     - target: {fileID: 332859582674263591, guid: 41188905378f696498601caded28e963,
         type: 3}
       propertyPath: m_Name
-      value: Store_racks_modular
+      value: Racks
       objectReference: {fileID: 0}
     - target: {fileID: 1140922166923101341, guid: 41188905378f696498601caded28e963,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1140922166923101341, guid: 41188905378f696498601caded28e963,
         type: 3}
