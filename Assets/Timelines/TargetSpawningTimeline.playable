@@ -389,7 +389,7 @@ MonoBehaviour:
   TargetMovementType: 2
   MovementSpeed: 2
   Points: 27
-  NumberOfHits: 3
+  NumberOfHits: 1
   CurrentHit: 0
   TargetPosition: {x: -10, y: -6, z: 27}
 --- !u!114 &-4820221249097025284
