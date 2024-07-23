@@ -5,10 +5,11 @@ namespace ShootingGallery
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] private Camera _camera;
         [SerializeField] private Transform _cameraLookAt;
-        [SerializeField] private Transform _targetIndicator;
+        [SerializeField] private Transform _targetIndicatorUI;
         [SerializeField] private LayerMask _targetLayer;
-        [SerializeField] private float _raycastDistance = 15f;
+        [SerializeField] private float _raycastDistance = 60f;
         [SerializeField] private float _cameraRotationSpeed = 1;
         [SerializeField] private float _minRotDelta = 0.3f;
         [SerializeField] private float _minPitch; 
@@ -56,12 +57,16 @@ namespace ShootingGallery
 
         private void OnPlayerShoot()
         {
-            Vector3 startPos = _targetIndicator.position + _targetIndicator.forward * 3f;
-            
-            if (_debugEnabled)
-                Debug.DrawLine(startPos, _targetIndicator.forward * _raycastDistance, Color.cyan, 3);
+            Vector3 startPos = _targetIndicatorUI.position + _targetIndicatorUI.forward * 3f;
+            startPos = _camera.ScreenToWorldPoint(_targetIndicatorUI.position);
 
-            if (Physics.Raycast(startPos, _targetIndicator.forward, out RaycastHit hitInfo, _raycastDistance, _targetLayer.value))
+            if (_debugEnabled)
+            {
+                Debug.DrawLine(startPos, _targetIndicatorUI.forward * _raycastDistance, Color.cyan, 3);
+                
+            }
+
+            if (Physics.Raycast(startPos, _targetIndicatorUI.forward, out RaycastHit hitInfo, _raycastDistance, _targetLayer.value))
             {
                 GameObject target = hitInfo.collider.gameObject;
                 var targetMovement = target.GetComponent<Target>();

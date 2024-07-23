@@ -386,12 +386,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb7be68cc6086b4e9f8bd71fdeaff80, type: 3}
   m_Name: TargetControlClip
   m_EditorClassIdentifier: 
-  TargetMovementType: 0
+  TargetMovementType: 2
   MovementSpeed: 2
-  Points: 50
+  Points: 27
   NumberOfHits: 3
   CurrentHit: 0
-  TargetPosition: {x: 2, y: 3, z: 0}
+  TargetPosition: {x: -10, y: -6, z: 27}
 --- !u!114 &-4820221249097025284
 MonoBehaviour:
   m_ObjectHideFlags: 1
