@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,16 +6,25 @@ namespace ShootingGallery
 {
     public class TargetManager : Singleton<TargetManager>
     {
+        [Serializable]
+        public struct PointTier
+        {
+            public Texture2D texture;
+            public int points;
+        }
+
         [SerializeField] private uint _initPoolSize;
         [SerializeField] private GameObject _objectToPool;
-        [SerializeField] private Texture2D _pointTierOneTexture;
-        [SerializeField] private Texture2D _pointTierTwoTexture;
-        [SerializeField] private Texture2D _pointTierThreTexture;
-        [SerializeField] private Texture2D _pointTierFourTexture;
-        [SerializeField] private int _pointTierOne = 10;
-        [SerializeField] private int _pointTierTwo = 50;
-        [SerializeField] private int _pointTierThree = 100;
-        [SerializeField] private int _pointTierFour = 150;
+        [SerializeField] private List<PointTier> _pointTiers;
+
+        //[SerializeField] private Texture2D _pointTierOneTexture;
+        //[SerializeField] private Texture2D _pointTierTwoTexture;
+        //[SerializeField] private Texture2D _pointTierThreTexture;
+        //[SerializeField] private Texture2D _pointTierFourTexture;
+        //[SerializeField] private int _pointTierOne = 10;
+        //[SerializeField] private int _pointTierTwo = 50;
+        //[SerializeField] private int _pointTierThree = 100;
+        //[SerializeField] private int _pointTierFour = 150;
 
         private Stack<Target> _targetPool;
 
@@ -82,26 +92,16 @@ namespace ShootingGallery
             }
         }
 
-        private Texture2D GetTargetTexture(uint targetPoint)
+        private Texture2D GetTargetTexture(uint targetPoints)
         {
-            Texture2D targetTexture;
-            if (targetPoint <= _pointTierOne)
+            foreach (var tier in _pointTiers)
             {
-                targetTexture = _pointTierOneTexture;
+                if (targetPoints <= tier.points)
+                {
+                    return tier.texture;
+                }
             }
-            else if (targetPoint <= _pointTierTwo)
-            {
-                targetTexture = _pointTierTwoTexture;
-            }
-            else if (targetPoint <= _pointTierThree)
-            {
-                targetTexture = _pointTierThreTexture;
-            }
-            else
-            {
-                targetTexture = _pointTierFourTexture;
-            }
-            return targetTexture;
+            return _pointTiers[_pointTiers.Count - 1].texture; 
         }
     }
 }

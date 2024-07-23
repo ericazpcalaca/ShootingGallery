@@ -587,7 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetMovementType: 3
   MovementSpeed: 5
-  Points: 50
+  Points: 150
   NumberOfHits: 2
   CurrentHit: 0
   TargetPosition: {x: 15, y: 1.5, z: 27}
