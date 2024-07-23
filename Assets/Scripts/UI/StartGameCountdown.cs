@@ -10,8 +10,8 @@ namespace ShootingGallery
 {
     public class StartGameCountdown : MonoBehaviour
     {
-        [SerializeField] private Image _txtReady;
-        [SerializeField] private Image _txtGo;
+        [SerializeField] private TextMeshProUGUI _txtReady;
+        [SerializeField] private TextMeshProUGUI _txtGo;
 
         private WaitForSeconds _waitOneSecond = new WaitForSeconds(1);
         private WaitForSeconds _waitTwoSeconds = new WaitForSeconds(2);
