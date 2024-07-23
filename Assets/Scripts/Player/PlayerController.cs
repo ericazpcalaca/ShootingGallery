@@ -45,7 +45,6 @@ namespace ShootingGallery
             GameStateManager.Instance.OnGameEnd += HandleGameEnd;
         }
 
-
         private void OnDestroy()
         {
             _playerInput.OnPlayerShoot -= OnPlayerShoot;
