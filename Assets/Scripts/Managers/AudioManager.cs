@@ -25,11 +25,11 @@ namespace ShootingGallery
                 Debug.LogError("AudioSource component not found.");
             }
         }
+
         public void PlayHitTarget()
         {
             if (_hitTarget != null && _soundEffects != null)
             {
-                Debug.Log("Quack metaforico");
                 _soundEffects.PlayOneShot(_hitTarget);
             }
             else

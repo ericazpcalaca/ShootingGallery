@@ -17,15 +17,6 @@ namespace ShootingGallery
         [SerializeField] private GameObject _objectToPool;
         [SerializeField] private List<PointTier> _pointTiers;
 
-        //[SerializeField] private Texture2D _pointTierOneTexture;
-        //[SerializeField] private Texture2D _pointTierTwoTexture;
-        //[SerializeField] private Texture2D _pointTierThreTexture;
-        //[SerializeField] private Texture2D _pointTierFourTexture;
-        //[SerializeField] private int _pointTierOne = 10;
-        //[SerializeField] private int _pointTierTwo = 50;
-        //[SerializeField] private int _pointTierThree = 100;
-        //[SerializeField] private int _pointTierFour = 150;
-
         private Stack<Target> _targetPool;
 
         private void Start()
