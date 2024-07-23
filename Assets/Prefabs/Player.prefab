@@ -2501,9 +2501,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraLookAt: {fileID: 0}
-  _targetLayer:
+  _raycastLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 12
+  _raycastObstructionLayer:
+    serializedVersion: 2
+    m_Bits: 4
   _raycastDistance: 60
   _cameraRotationSpeed: 15
   _minRotDelta: 0.3

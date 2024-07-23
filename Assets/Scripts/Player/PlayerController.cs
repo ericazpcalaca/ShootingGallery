@@ -1,12 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
 namespace ShootingGallery
 {
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private Transform _cameraLookAt;
-        [SerializeField] private LayerMask _targetLayer;
+        [SerializeField] private LayerMask _raycastLayers;
+        [SerializeField] private LayerMask _raycastObstructionLayer;
         [SerializeField] private float _raycastDistance = 60f;
         [SerializeField] private float _cameraRotationSpeed = 1;
         [SerializeField] private float _minRotDelta = 0.3f;
@@ -61,8 +63,11 @@ namespace ShootingGallery
             if (_debugEnabled)
                 Debug.DrawLine(startPos, startPos + (direction * _raycastDistance), Color.cyan, 3);
 
-            if (Physics.Raycast(startPos, direction, out RaycastHit hitInfo, _raycastDistance, _targetLayer.value))
+            if (Physics.Raycast(startPos, direction, out RaycastHit hitInfo, _raycastDistance, _raycastLayers.value))
             {
+                if ((_raycastObstructionLayer.value & (1 << hitInfo.collider.gameObject.layer)) != 0)
+                    return;
+
                 GameObject target = hitInfo.collider.gameObject;
                 var targetMovement = target.GetComponent<Target>();
 
