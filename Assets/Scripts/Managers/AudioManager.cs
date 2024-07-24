@@ -11,7 +11,7 @@ namespace ShootingGallery
 
         [Header("Audio Clip")]
         [SerializeField] private AudioClip _hitTarget;
-    
+
         private void Awake()
         {
             if (_hitTarget == null)
