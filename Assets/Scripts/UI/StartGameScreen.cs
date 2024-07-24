@@ -11,6 +11,8 @@ namespace ShootingGallery
         [SerializeField] private Button _btnStart;
         [SerializeField] private Button _btnInstruction;
         [SerializeField] private Button _btnExit;
+        [SerializeField] private Button _btnClose;
+        [SerializeField] private GameObject _instructionScene;
         [SerializeField] private string _mainSceneName = "MainScene";
 
         void Start()
@@ -18,6 +20,8 @@ namespace ShootingGallery
             _btnStart.onClick.AddListener(OnStartGame);
             _btnInstruction.onClick.AddListener(OpenInstruction);
             _btnExit.onClick.AddListener(OnExitGame);
+            _btnClose.onClick.AddListener(CloseInstruction);
+            _instructionScene.SetActive(false);
         }
 
         private void OnStartGame()
@@ -40,6 +44,12 @@ namespace ShootingGallery
 
         private void OpenInstruction()
         {
+            _instructionScene.SetActive(true);
+        }
+
+        private void CloseInstruction()
+        {
+            _instructionScene.SetActive(false);
         }
 
         private void OnExitGame()
