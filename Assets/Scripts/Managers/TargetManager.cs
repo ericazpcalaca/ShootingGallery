@@ -70,6 +70,7 @@ namespace ShootingGallery
         {
             target.ConfigureMaterial(originalTexture);
         }
+
         private void SetupPool()
         {
             _targetPool = new Stack<Target>();

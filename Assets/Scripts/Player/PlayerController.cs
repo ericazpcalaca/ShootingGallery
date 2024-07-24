@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 
@@ -28,6 +30,7 @@ namespace ShootingGallery
         private uint _playerScore;
         private uint _playerMaxScore;
         private bool _isCountdownActive;
+        private float _rotationSpeed = 2.0f;
 
         private void Awake()
         {
@@ -155,14 +158,34 @@ namespace ShootingGallery
             _playerInput.ShowMouse(true);
             _playerScore = 0;
             UpdateScore?.Invoke(_playerScore);
-            
+            StartCoroutine(SmoothRotateToLookAt());
         }
 
         private void HandleRestart()
         {
+            StartCoroutine(SmoothRotateToLookAt());
             _playerScore = 0;
             UpdateScore?.Invoke(_playerScore);
             _playerInput.ResumeGame();
+        }
+
+        private IEnumerator SmoothRotateToLookAt()
+        {
+            Quaternion initialRotation = transform.rotation;
+            Vector3 lookDirection = (_cameraLookAt.position - transform.position).normalized;
+            Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+
+            float elapsedTime = 0f;
+            while (elapsedTime < 1f / _rotationSpeed)
+            {
+                transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, elapsedTime * _rotationSpeed);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.rotation = targetRotation;
+            _currentCameraYaw = transform.eulerAngles.y;
+            _currentCameraPitch = transform.eulerAngles.x;
         }
 
         private void HandleGamePause(bool isPaused)
