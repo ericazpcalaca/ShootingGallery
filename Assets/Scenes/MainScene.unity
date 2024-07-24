@@ -1291,6 +1291,7 @@ MonoBehaviour:
     points: 100
   - texture: {fileID: 2800000, guid: 04759ea379892b64d897ac2a550fecfe, type: 3}
     points: 150
+  _flashTexture: {fileID: 2800000, guid: 2f14b061b9a081040971986525026db0, type: 3}
 --- !u!320 &593742439
 PlayableDirector:
   m_ObjectHideFlags: 0

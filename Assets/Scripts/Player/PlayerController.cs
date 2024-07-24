@@ -81,6 +81,7 @@ namespace ShootingGallery
                 {
                     target.CurrentHit += 1;
                     AudioManager.Instance.PlayHitTarget();
+                    TargetManager.Instance.FlashStart(target);
                 }
                 else
                 {
