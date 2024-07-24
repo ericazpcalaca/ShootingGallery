@@ -1,5 +1,4 @@
-using System;
-using TMPro;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +9,8 @@ namespace ShootingGallery
     {
         [SerializeField] private Button _btnStart;
         [SerializeField] private Button _btnExit;
+        [SerializeField] private string _mainSceneName = "MainScene";
+
         void Start()
         {
             _btnStart.onClick.AddListener(OnStartGame);
@@ -18,7 +19,20 @@ namespace ShootingGallery
 
         private void OnStartGame()
         {
-            SceneManager.LoadScene("MainScene");
+            StartCoroutine(LoadScene());
+        }
+
+        private IEnumerator LoadScene()
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_mainSceneName);
+
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+
+            Scene newScene = SceneManager.GetSceneByName(_mainSceneName);
+            SceneManager.SetActiveScene(newScene);
         }
 
         private void OnExitGame()
