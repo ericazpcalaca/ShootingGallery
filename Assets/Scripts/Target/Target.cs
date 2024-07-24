@@ -21,6 +21,7 @@ namespace ShootingGallery
         [SerializeField] private int _numberOfHits;
 
         private Material _material;
+        private Quaternion _originalRotation;
 
         public float Speed
         {
@@ -61,6 +62,7 @@ namespace ShootingGallery
             CanMove = true;
             _currentHit = 0;
             _boundaryLayer = LayerMask.NameToLayer(_boundaryLayerName);
+            _originalRotation = transform.rotation;
 
             GameStateManager.Instance.OnGameEnd += HandleGameEnd;
             GameStateManager.Instance.OnGameStart += HandleGameStart;
@@ -143,11 +145,13 @@ namespace ShootingGallery
 
         private void HandleGameEnd()
         {
+            transform.rotation = _originalRotation;
             TargetManager.Instance.ReturnToPool(this);
         }
 
         private void HandleGameStart()
         {
+            transform.rotation = _originalRotation;
             TargetManager.Instance.ReturnToPool(this);
         }
 
@@ -158,6 +162,7 @@ namespace ShootingGallery
 
         private void HandleRestart()
         {
+            transform.rotation = _originalRotation;
             TargetManager.Instance.ReturnToPool(this);
         }
     }

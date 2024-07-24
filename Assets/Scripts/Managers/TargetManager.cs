@@ -43,32 +43,9 @@ namespace ShootingGallery
             target.CurrentHit = currentHit;
             target.NumberOfHits = numOfHits;
 
+            Debug.Log($"Movement type: { movementType}");
             Texture2D targetTexture = GetTargetTexture(points);
             target.ConfigureMaterial(targetTexture);
-        }
-
-        public void ReturnToPool(Target target)
-        {
-            _targetPool.Push(target);
-            target.gameObject.SetActive(false);
-        }
-
-        public void FlashStart(Target target)
-        {
-            Texture2D oldTexture = GetTargetTexture(target.TargetScore);
-            target.ConfigureMaterial(_flashTexture);
-            StartCoroutine(CallFlashStopAfterDelay(0.15f, target, oldTexture));
-        }
-
-        private IEnumerator CallFlashStopAfterDelay(float delay, Target target, Texture2D originalTexture)
-        {
-            yield return new WaitForSeconds(delay);
-            FlashStop(target, originalTexture);
-        }
-
-        private void FlashStop(Target target, Texture2D originalTexture)
-        {
-            target.ConfigureMaterial(originalTexture);
         }
 
         private void SetupPool()
@@ -102,6 +79,33 @@ namespace ShootingGallery
                 GameObject targetGameObject = Instantiate(_objectToPool);
                 return targetGameObject.GetComponent<Target>();
             }
+        }
+
+        public void ReturnToPool(Target target)
+        {
+            if (!_targetPool.Contains(target))
+            {
+                _targetPool.Push(target);
+            }
+            target.gameObject.SetActive(false);
+        }
+
+        public void FlashStart(Target target)
+        {
+            Texture2D oldTexture = GetTargetTexture(target.TargetScore);
+            target.ConfigureMaterial(_flashTexture);
+            StartCoroutine(CallFlashStopAfterDelay(0.15f, target, oldTexture));
+        }
+
+        private IEnumerator CallFlashStopAfterDelay(float delay, Target target, Texture2D originalTexture)
+        {
+            yield return new WaitForSeconds(delay);
+            FlashStop(target, originalTexture);
+        }
+
+        private void FlashStop(Target target, Texture2D originalTexture)
+        {
+            target.ConfigureMaterial(originalTexture);
         }
 
         private Texture2D GetTargetTexture(uint targetPoints)
