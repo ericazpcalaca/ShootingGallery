@@ -29,8 +29,6 @@ This is a Unity-based Duck Shooting Game where players aim to shoot moving targe
   - Uses PlayableDirector components to control game and target sequences (e.g., cutscenes, animations) by playing, stopping, pausing, and resetting them.
 - **AudioManager**:
   - Controls all audio-related functions, including playing sound effects.
-- **UIManager**:
-  - Manages the display and updating of UI elements such as the HUD and instruction panel.
 
 ## License
 This project is licensed under the MIT License.
