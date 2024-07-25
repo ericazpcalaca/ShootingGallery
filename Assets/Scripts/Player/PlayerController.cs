@@ -83,7 +83,6 @@ namespace ShootingGallery
                 if (target.CurrentHit < target.NumberOfHits - 1)
                 {
                     target.CurrentHit += 1;
-                    AudioManager.Instance.PlayHitTarget();
                     TargetManager.Instance.FlashStart(target);
                 }
                 else
