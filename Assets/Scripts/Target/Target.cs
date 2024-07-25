@@ -19,9 +19,11 @@ namespace ShootingGallery
         [SerializeField] private uint _targetScore;
         [SerializeField] private string _boundaryLayerName;
         [SerializeField] private int _numberOfHits;
+        [SerializeField] private float _maxHeight = 5f;  // New variable for max height
 
         private Material _material;
         private Quaternion _originalRotation;
+        private Vector3 _startPosition;  // Starting position to calculate the height
 
         public float Speed
         {
@@ -63,6 +65,7 @@ namespace ShootingGallery
             _currentHit = 0;
             _boundaryLayer = LayerMask.NameToLayer(_boundaryLayerName);
             _originalRotation = transform.rotation;
+            _startPosition = transform.position;  // Save the starting position
 
             GameStateManager.Instance.OnGameEnd += HandleGameEnd;
             GameStateManager.Instance.OnGameStart += HandleGameStart;
@@ -124,6 +127,10 @@ namespace ShootingGallery
         private void MoveUp()
         {
             transform.position += transform.up * _speed * Time.deltaTime;
+            if (transform.position.y >= _startPosition.y + _maxHeight)
+            {
+                _movementType = MovementType.Down;
+            }
         }
 
         private void MoveDown()

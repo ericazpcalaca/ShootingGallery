@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3fb26a9dece674a9075ae36e9aa3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initPoolSize: 15
+  _initPoolSize: 40
   _objectToPool: {fileID: 7523105685032556308, guid: f38240a3622d623489af38b3a292dbe5,
     type: 3}
   _pointTiers:
