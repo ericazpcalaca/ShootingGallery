@@ -94,7 +94,6 @@ namespace ShootingGallery
                     TargetManager.Instance.ReturnToPool(target);
                 }
             }
-
         }
 
         private void OnPlayerMoveCamera(Vector2 posDelta)
@@ -151,6 +150,7 @@ namespace ShootingGallery
             {
                 PlayerPrefs.SetInt("HighScore", (int)_playerScore);
                 _playerMaxScore = _playerScore;
+                AudioManager.Instance.PlayNewHighScore();
             }
             UpdateMaxScore?.Invoke(_playerMaxScore);
             UpdateFinalScore?.Invoke(_playerScore);

@@ -13,6 +13,9 @@ namespace ShootingGallery
         [SerializeField] private AudioClip _hitTarget;
         [SerializeField] private AudioClip _clickButton;
         [SerializeField] private AudioClip _houverButton;
+        [SerializeField] private AudioClip _ready;
+        [SerializeField] private AudioClip _go;
+        [SerializeField] private AudioClip _newHighScore;
 
         private void Awake()
         {
@@ -53,6 +56,30 @@ namespace ShootingGallery
             if (_clickButton != null)
             {
                 _soundEffects.PlayOneShot(_houverButton);
+            }
+        }
+
+        public void PlayReady()
+        {
+            if (_clickButton != null)
+            {
+                _soundEffects.PlayOneShot(_ready);
+            }
+        }
+
+        public void PlayGo()
+        {
+            if (_clickButton != null)
+            {
+                _soundEffects.PlayOneShot(_go);
+            }
+        }
+
+        public void PlayNewHighScore()
+        {
+            if (_clickButton != null)
+            {
+                _soundEffects.PlayOneShot(_newHighScore);
             }
         }
     }
