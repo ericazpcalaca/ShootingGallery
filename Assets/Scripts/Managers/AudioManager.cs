@@ -11,6 +11,8 @@ namespace ShootingGallery
 
         [Header("Audio Clip")]
         [SerializeField] private AudioClip _hitTarget;
+        [SerializeField] private AudioClip _clickButton;
+        [SerializeField] private AudioClip _houverButton;
 
         private void Awake()
         {
@@ -35,6 +37,22 @@ namespace ShootingGallery
             else
             {
                 Debug.LogError("Cannot play hit target sound. AudioSource or AudioClip is missing.");
+            }
+        }
+
+        public void PlayClickButton()
+        {
+            if (_clickButton != null)
+            {
+                _soundEffects.PlayOneShot(_clickButton);
+            }
+        }
+
+        public void PlayHouverButton()
+        {
+            if (_clickButton != null)
+            {
+                _soundEffects.PlayOneShot(_houverButton);
             }
         }
     }

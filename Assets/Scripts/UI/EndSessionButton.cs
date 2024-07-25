@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace ShootingGallery
@@ -32,7 +33,7 @@ namespace ShootingGallery
 
         private void OnExitButtonClick()
         {
-            Application.Quit();
+            SceneManager.LoadScene("StartScene");
         }
     }
 }
