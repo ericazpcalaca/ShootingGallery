@@ -19,11 +19,11 @@ namespace ShootingGallery
         [SerializeField] private uint _targetScore;
         [SerializeField] private string _boundaryLayerName;
         [SerializeField] private int _numberOfHits;
-        [SerializeField] private float _maxHeight = 5f;  // New variable for max height
+        [SerializeField] private float _maxHeight = 5f; 
 
         private Material _material;
         private Quaternion _originalRotation;
-        private Vector3 _startPosition;  // Starting position to calculate the height
+        private Vector3 _startPosition;  
 
         public float Speed
         {
