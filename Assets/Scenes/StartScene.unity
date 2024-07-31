@@ -5181,6 +5181,9 @@ MonoBehaviour:
   _hitTarget: {fileID: 8300000, guid: ffe2dc2c2edaae4478b6bea3489cef1e, type: 3}
   _clickButton: {fileID: 8300000, guid: b1f0040ffb9b1a54e803a99875a71488, type: 3}
   _houverButton: {fileID: 8300000, guid: b1f0040ffb9b1a54e803a99875a71488, type: 3}
+  _ready: {fileID: 8300000, guid: 01c6a5d4f93a4d94eab5969975b94abc, type: 3}
+  _go: {fileID: 8300000, guid: ecc94ef8b44ba214f991b71b4850793d, type: 3}
+  _newHighScore: {fileID: 8300000, guid: ba2753660e0d03047b7139029ccf1bfa, type: 3}
 --- !u!4 &1473886910
 Transform:
   m_ObjectHideFlags: 0

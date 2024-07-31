@@ -37,7 +37,6 @@ namespace ShootingGallery
                 GameObject gameObject = new GameObject();
                 gameObject.name = typeof(T).Name;
                 _instance = gameObject.AddComponent<T>();
-                DontDestroyOnLoad(gameObject);
             }
         }
 
@@ -46,7 +45,6 @@ namespace ShootingGallery
             if(_instance == null)
             {
                 _instance = this as T;
-                DontDestroyOnLoad(gameObject);
             }
             else if (_instance != this)  
             {

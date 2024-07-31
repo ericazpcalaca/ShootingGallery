@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,7 +19,7 @@ namespace ShootingGallery
         {
             _btnPauseContinue.onClick.AddListener(OnPauseContinueButtonClick);
             _btnPauseRetry.onClick.AddListener(OnPauseRetryButtonClick);
-            _btnPauseRetry.onClick.AddListener(OnPauseExitButtonClick);       
+            _btnPauseExit.onClick.AddListener(OnPauseExitButtonClick);       
             
             _playerInput = GetComponentInParent<PlayerInput>();
         }

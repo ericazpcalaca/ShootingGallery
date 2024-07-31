@@ -43,7 +43,6 @@ namespace ShootingGallery
             target.CurrentHit = currentHit;
             target.NumberOfHits = numOfHits;
 
-            Debug.Log($"Movement type: { movementType}");
             Texture2D targetTexture = GetTargetTexture(points);
             target.ConfigureMaterial(targetTexture);
         }
