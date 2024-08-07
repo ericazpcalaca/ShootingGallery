@@ -1,8 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
+using UnityEngine.SceneManagement;
 
 namespace ShootingGallery
 {
@@ -14,10 +13,10 @@ namespace ShootingGallery
         [SerializeField] private float _raycastDistance = 60f;
         [SerializeField] private float _cameraRotationSpeed = 1;
         [SerializeField] private float _minRotDelta = 0.3f;
-        [SerializeField] private float _minPitch; 
-        [SerializeField] private float _maxPitch;  
-        [SerializeField] private float _minYaw;   
-        [SerializeField] private float _maxYaw ;
+        [SerializeField] private float _minPitch;
+        [SerializeField] private float _maxPitch;
+        [SerializeField] private float _minYaw;
+        [SerializeField] private float _maxYaw;
         [SerializeField] private bool _debugEnabled;
 
         public Action<uint> UpdateScore;
@@ -38,25 +37,40 @@ namespace ShootingGallery
             _playerInput.OnPlayerShoot += OnPlayerShoot;
             _playerInput.OnPlayerMoveCamera += OnPlayerMoveCamera;
             _playerScore = 0;
-            _isCountdownActive = true; 
+            _isCountdownActive = true;
 
             CalculateInitialCameraRotation();
-            GameStateManager.Instance.OnGameCountdown += HandleContdown;
+            GameStateManager.Instance.OnGameCountdown += HandleCountdown;
             GameStateManager.Instance.OnGameStart += HandleStart;
             GameStateManager.Instance.OnGameRestart += HandleRestart;
             GameStateManager.Instance.OnGamePause += HandleGamePause;
             GameStateManager.Instance.OnGameEnd += HandleGameEnd;
+
+            SceneManager.sceneLoaded += OnSceneLoaded;  
         }
 
         private void OnDestroy()
         {
             _playerInput.OnPlayerShoot -= OnPlayerShoot;
             _playerInput.OnPlayerMoveCamera -= OnPlayerMoveCamera;
-            GameStateManager.Instance.OnGameCountdown -= HandleContdown;
+            GameStateManager.Instance.OnGameCountdown -= HandleCountdown;
             GameStateManager.Instance.OnGameStart -= HandleStart;
             GameStateManager.Instance.OnGameRestart -= HandleRestart;
             GameStateManager.Instance.OnGamePause -= HandleGamePause;
             GameStateManager.Instance.OnGameEnd -= HandleGameEnd;
+
+            SceneManager.sceneLoaded -= OnSceneLoaded;  
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (_debugEnabled)
+                Debug.Log("Scene loaded: " + scene.name);
+
+            StartCoroutine(SmoothRotateToLookAt());
+            _playerScore = 0;
+            UpdateScore?.Invoke(_playerScore);
+            _playerInput.ResumeGame();
         }
 
         private void Update()
@@ -98,7 +112,7 @@ namespace ShootingGallery
 
         private void OnPlayerMoveCamera(Vector2 posDelta)
         {
-            if(_isCountdownActive) 
+            if (_isCountdownActive)
                 return;
 
             if (Mathf.Abs(posDelta.x) > _minRotDelta)
@@ -121,6 +135,9 @@ namespace ShootingGallery
             transform.rotation = Quaternion.LookRotation(lookDirection);
             _currentCameraYaw = transform.eulerAngles.y;
             _currentCameraPitch = transform.eulerAngles.x;
+
+            if (_debugEnabled)
+                Debug.Log($"Initial camera rotation set. Yaw: {_currentCameraYaw}, Pitch: {_currentCameraPitch}");
         }
 
         private void UpdateRotation()
@@ -131,9 +148,12 @@ namespace ShootingGallery
 
             // Player camera will follow this target
             transform.rotation = Quaternion.Euler(_currentCameraPitch, _currentCameraYaw, 0.0f);
+
+            if (_debugEnabled)
+                Debug.Log($"Updated camera rotation. Yaw: {_currentCameraYaw}, Pitch: {_currentCameraPitch}");
         }
 
-        private void HandleContdown()
+        private void HandleCountdown()
         {
             _isCountdownActive = true;
         }
@@ -145,7 +165,7 @@ namespace ShootingGallery
 
         private void HandleGameEnd()
         {
-            _playerMaxScore = (uint) PlayerPrefs.GetInt("HighScore", 0);
+            _playerMaxScore = (uint)PlayerPrefs.GetInt("HighScore", 0);
             if (_playerScore > _playerMaxScore)
             {
                 PlayerPrefs.SetInt("HighScore", (int)_playerScore);
@@ -185,11 +205,14 @@ namespace ShootingGallery
             transform.rotation = targetRotation;
             _currentCameraYaw = transform.eulerAngles.y;
             _currentCameraPitch = transform.eulerAngles.x;
+
+            if (_debugEnabled)
+                Debug.Log($"Smooth rotate completed. Yaw: {_currentCameraYaw}, Pitch: {_currentCameraPitch}");
         }
 
         private void HandleGamePause(bool isPaused)
         {
-            if(!isPaused)
+            if (!isPaused)
             {
                 _playerInput.ResumeGame();
             }
