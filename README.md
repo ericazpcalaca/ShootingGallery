@@ -30,5 +30,8 @@ This is a Unity-based Duck Shooting Game where players aim to shoot moving targe
 - **AudioManager**:
   - Controls all audio-related functions, including playing sound effects.
 
+## Video
+[![Quack Attack Gameplay](https://github.com/user-attachments/assets/0c728e30-fa47-4ae8-8285-46f30ac5fabd)](https://youtu.be/4o0snNpCsCo)
+
 ## License
 This project is licensed under the MIT License.
